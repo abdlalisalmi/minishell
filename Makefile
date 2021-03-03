@@ -6,13 +6,16 @@
 #    By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/03 18:34:17 by aes-salm          #+#    #+#              #
-#    Updated: 2021/03/03 18:49:56 by aes-salm         ###   ########.fr        #
+#    Updated: 2021/03/03 18:56:26 by aes-salm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = minishell.a
+NAME = minishell
+
 CFLAGS= -Wall -Werror -Wextra
+
 CC= gcc
+
 SRCS = 
 
 
