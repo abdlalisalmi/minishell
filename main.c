@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 14:01:52 by atahiri           #+#    #+#             */
-/*   Updated: 2021/04/01 14:05:12 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/04/01 14:16:49 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 int     main(int argc, char **argv)
 {
     if (argc == 2)
-    	printf("%s", argv[1]);
+    	printf("minishell start");
     return (0);
 }
