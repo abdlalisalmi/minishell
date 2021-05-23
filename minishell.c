@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 14:01:52 by atahiri           #+#    #+#             */
-/*   Updated: 2021/04/01 14:16:49 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/05/23 11:00:04 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int     main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    if (argc == 2)
-    	printf("minishell start");
-    return (0);
+	(void) argv;
+	if (argc == 2)
+		printf("minishell start");
+	return (0);
 }

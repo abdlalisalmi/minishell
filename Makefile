@@ -3,29 +3,24 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+         #
+#    By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/03 18:34:17 by aes-salm          #+#    #+#              #
-#    Updated: 2021/04/01 14:11:59 by atahiri          ###   ########.fr        #
+#    Updated: 2021/05/23 11:01:34 by aes-salm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = minishell
+NAME	= minishell
+CC		= gcc
+CFLAGS	= -Wall -Werror -Wextra
+OBJS	= $(SRCS:.c=.o)
+SRCS 	= main.c\
 
-CFLAGS= -Wall -Werror -Wextra
-
-CC= gcc
-
-SRCS = main.c
-
-OBJS=	$(SRCS:.c=.o)
+$(NAME):	$(OBJS)
+			$(CC) $(CFLAGS) $(OBJS) -o $@
 
 
 all: 		$(NAME)
-
-$(NAME):
-	gcc $(CFLAGS) -c $(SRCS)
-	gcc -o $(NAME) $(OBJS) -g
 
 clean:
 			@rm -rf *.o
