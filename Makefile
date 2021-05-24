@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+         #
+#    By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/03 18:34:17 by aes-salm          #+#    #+#              #
-#    Updated: 2021/05/24 10:03:38 by atahiri          ###   ########.fr        #
+#    Updated: 2021/05/24 10:16:54 by aes-salm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ CC		= gcc
 CFLAGS	= -Wall -Werror -Wextra
 OBJS	= $(SRCS:.c=.o)
 SRCS 	=	minishell.c\
-			libft/ft_strlen.c\
-			ft_gnl.c\
+			functions/ft_strlen.c\
+			functions/ft_gnl.c\
 			
 
 $(NAME):	$(OBJS)
@@ -26,7 +26,7 @@ $(NAME):	$(OBJS)
 all: 		$(NAME)
 
 clean:
-			@rm -rf *.o libft/*.o
+			@rm -rf *.o functions/*.o
 
 fclean: 	clean
 			@rm -rf $(NAME)

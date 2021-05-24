@@ -1,58 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_gnl.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/01 14:02:06 by atahiri           #+#    #+#             */
-/*   Updated: 2021/05/24 10:17:34 by aes-salm         ###   ########.fr       */
+/*   Created: 2021/05/24 09:45:56 by atahiri           #+#    #+#             */
+/*   Updated: 2021/05/24 10:15:43 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "minishell.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
+int	ft_gnl(char **line)
+{
+	char	*buffer;
+	int		flag;
 
-# define PROMPT "minishell-1.0$ "
-# define COLOR "\033[0;33m"
-
-/* ABDELAALI STRUCT */
-
-
-
-
-
-
-
-/* AMINE STRUCT */
-typedef	struct	s_all {
-	char	*buff;
-	
-}				t_all;
-
-t_all	g_all;
-
-
-
-
-
-/* ABDELAALI PROTOTYPES */
-
-
-
-
-
-
-
-
-
-
-/* AMINE PROTOTYPES */
-int			ft_gnl(char **line);
-int			ft_strlen(char *s);
-
-#endif
+	buffer = (char *)malloc(2);
+	if (!line || !(*line = (char *)malloc(1)) || !buffer)
+		return (-1);
+	*line[0] = '\0';
+	while ((flag = read(0, buffer, 1)) > 0)
+	{
+		if (buffer[0] == '\n')
+			break ;
+		*line = ft_strjoin(*line, buffer[0]);
+	}
+	free(buffer);
+	return (flag);
+}
