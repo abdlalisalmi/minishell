@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 11:50:02 by atahiri           #+#    #+#             */
-/*   Updated: 2021/05/24 12:09:40 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/05/24 14:02:02 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void		start_parsing(char *line)
 {
-	char **cmd = ft_split(line, ' ');
-	write(1, cmd[0], ft_strlen(cmd[0]));
+	g_all.cmds = ft_split(line, ' ');
+	write(1, g_all.cmds[0], ft_strlen(g_all.cmds[0]));
 }
