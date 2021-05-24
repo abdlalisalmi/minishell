@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_gnl.c                                           :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/24 09:45:56 by atahiri           #+#    #+#             */
-/*   Updated: 2021/05/24 11:55:36 by atahiri          ###   ########.fr       */
+/*   Created: 2021/05/24 11:50:02 by atahiri           #+#    #+#             */
+/*   Updated: 2021/05/24 12:09:40 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	ft_gnl(char **line)
+void		start_parsing(char *line)
 {
-	char	*buffer;
-	int		flag;
-
-	buffer = (char *)malloc(2);
-	if (!line || !(*line = (char *)malloc(1)) || !buffer)
-		return (-1);
-	*line[0] = '\0';
-	while ((flag = read(0, buffer, 1)) > 0)
-	{
-		if (buffer[0] == '\n')
-			break ;
-		*line = ft_strjoin(*line, buffer[0]);
-	}
-	free(buffer);
-	return (flag);
+	char **cmd = ft_split(line, ' ');
+	write(1, cmd[0], ft_strlen(cmd[0]));
 }
