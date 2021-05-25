@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_gnl.c                                           :+:      :+:    :+:   */
+/*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/24 09:45:56 by atahiri           #+#    #+#             */
-/*   Updated: 2021/05/25 14:54:44 by aes-salm         ###   ########.fr       */
+/*   Created: 2021/05/25 15:07:23 by aes-salm          #+#    #+#             */
+/*   Updated: 2021/05/25 15:39:22 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../minishell.h"
 
-int	ft_gnl(char **line)
+void ft_pwd(void)
 {
-	char	*buffer;
-	int		flag;
+	int i;
+	char pwd[2048];
 
-	buffer = (char *)malloc(2);
-	if (!line || !(*line = (char *)malloc(1)) || !buffer)
-		return (-1);
-	*line[0] = '\0';
-	while ((flag = read(0, buffer, 1)) > 0)
-	{
-		if (buffer[0] == '\n')
-			break ;
-		*line = ft_strjoin(*line, buffer[0]);
-	}
-	free(buffer);
-	return (flag);
+	getcwd(pwd, 2048);
+	i = -1;
+	while (pwd[++i])
+		write(1, &pwd[i], 1);
+	write(1, "\n", 1);
 }

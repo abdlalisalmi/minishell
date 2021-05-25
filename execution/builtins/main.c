@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_gnl.c                                           :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/24 09:45:56 by atahiri           #+#    #+#             */
-/*   Updated: 2021/05/25 14:54:44 by aes-salm         ###   ########.fr       */
+/*   Created: 2021/05/25 15:13:03 by aes-salm          #+#    #+#             */
+/*   Updated: 2021/05/25 15:15:41 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../minishell.h"
 
-int	ft_gnl(char **line)
+int main(void)
 {
-	char	*buffer;
-	int		flag;
-
-	buffer = (char *)malloc(2);
-	if (!line || !(*line = (char *)malloc(1)) || !buffer)
-		return (-1);
-	*line[0] = '\0';
-	while ((flag = read(0, buffer, 1)) > 0)
-	{
-		if (buffer[0] == '\n')
-			break ;
-		*line = ft_strjoin(*line, buffer[0]);
-	}
-	free(buffer);
-	return (flag);
+	ft_pwd();
+	return (0);
 }
