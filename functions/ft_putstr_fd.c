@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/25 15:07:23 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/05/25 21:35:32 by aes-salm         ###   ########.fr       */
+/*   Created: 2021/05/25 17:45:23 by aes-salm          #+#    #+#             */
+/*   Updated: 2021/05/25 18:11:29 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../minishell.h"
 
-char *ft_pwd(void)
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}
+
+void	ft_putstr_fd(char *s, int fd)
 {
 	int i;
-	char pwd[2048];
 
-	if (!getcwd(pwd, 2048))
-		return (NULL);
-	i = -1;
-	return (ft_strdup(pwd));
+	i = 0;
+	if (!s || !fd)
+		return ;
+	while (s[i])
+	{
+		ft_putchar_fd(s[i], fd);
+		i++;
+	}
 }

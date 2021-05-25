@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/25 15:07:23 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/05/25 21:35:32 by aes-salm         ###   ########.fr       */
+/*   Created: 2021/05/25 20:51:10 by aes-salm          #+#    #+#             */
+/*   Updated: 2021/05/25 20:51:20 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../minishell.h"
 
-char *ft_pwd(void)
+char	*ft_strdup(const char *str)
 {
-	int i;
-	char pwd[2048];
+	char			*ptr;
+	unsigned int	i;
 
-	if (!getcwd(pwd, 2048))
+	i = 0;
+	while (str[i])
+		i++;
+	if (!(ptr = malloc(i + 1)))
 		return (NULL);
-	i = -1;
-	return (ft_strdup(pwd));
+	i = 0;
+	while (str[i])
+	{
+		ptr[i] = str[i];
+		i++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
 }

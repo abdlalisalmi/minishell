@@ -6,7 +6,7 @@
 #    By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/03 18:34:17 by aes-salm          #+#    #+#              #
-#    Updated: 2021/05/25 15:39:07 by aes-salm         ###   ########.fr        #
+#    Updated: 2021/05/25 21:10:54 by aes-salm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,14 @@ SRCS 	=	functions/ft_strlen.c\
 			functions/ft_strjoin.c\
 			functions/ft_gnl.c\
 			functions/ft_split.c\
+			functions/ft_putstr_fd.c\
+			functions/ft_memcopy.c\
+			functions/ft_strcmp.c\
+			functions/ft_strdup.c\
 			parsing/parsing.c\
-			execution/builtins/ft_pwd.c
+			execution/env.c\
+			execution/builtins/ft_pwd.c\
+			execution/builtins/ft_cd.c\
 
 			
 			
@@ -45,5 +51,5 @@ amine: 		re
 			@ rm -rf $(NAME) minishell.a *.o
 
 abdlali: 	re
-			@ $(CC) $(FLAGS) execution/builtins/main.c $(NAME)
+			@ $(CC) $(FLAGS) execution/main.c $(NAME) -g
 			@ rm -rf $(NAME) minishell.a *.o

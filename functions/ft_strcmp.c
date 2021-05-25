@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/25 15:07:23 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/05/25 21:35:32 by aes-salm         ###   ########.fr       */
+/*   Created: 2021/05/25 20:37:44 by aes-salm          #+#    #+#             */
+/*   Updated: 2021/05/25 21:14:04 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../minishell.h"
 
-char *ft_pwd(void)
+int	ft_strcmp(char *str1, char *str2)
 {
-	int i;
-	char pwd[2048];
+	int	i;
 
-	if (!getcwd(pwd, 2048))
-		return (NULL);
-	i = -1;
-	return (ft_strdup(pwd));
+	i = 0;
+	if ((str1 == NULL && str2 != NULL) || (str2 == NULL && str1 != NULL))
+		return (0);
+	if (str1 == NULL && str2 == NULL)
+		return (1);
+	while (str1[i] == str2[i])
+	{
+		if (str1[i] == '\0' || str2[i] == '\0')
+			break ;
+		i++;
+	}
+	if (str1[i] == '\0' && str2[i] == '\0')
+		return (1);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 14:02:06 by atahiri           #+#    #+#             */
-/*   Updated: 2021/05/25 15:39:44 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/05/25 21:35:40 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,11 @@
 # define COLOR "\033[0;33m"
 
 /* ABDELAALI STRUCT */
-
+typedef struct 	s_env 
+{
+	char 		*name;
+	char 		*value;
+}				t_env;
 
 
 
@@ -34,7 +38,9 @@ typedef struct s_all {
 	char	*buff;
 	char	**cmds;
 	char	**args;
-
+	
+	int		n_env;
+	t_env	*env;
 }				t_all;
 
 t_all	g_all;
@@ -44,7 +50,16 @@ t_all	g_all;
 
 
 /* ABDELAALI PROTOTYPES */
-void		ft_pwd(void);
+char	*ft_pwd(void);
+int		ft_cd(char *path, int fd);
+void	collect_env(char **envp);
+char	*get_env(char *name);
+int		set_env(char *name, char *value);
+
+void	ft_putstr_fd(char *s, int fd);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
+int		ft_strcmp(char *str1, char *str2);
+char	*ft_strdup(const char *str);
 
 
 
