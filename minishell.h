@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 14:02:06 by atahiri           #+#    #+#             */
-/*   Updated: 2021/05/24 10:17:34 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/05/24 10:51:21 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ t_all	g_all;
 /* AMINE PROTOTYPES */
 int			ft_gnl(char **line);
 int			ft_strlen(char *s);
+char		*ft_strjoin(char *s, char c);
 
 #endif

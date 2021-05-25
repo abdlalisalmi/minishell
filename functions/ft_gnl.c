@@ -6,11 +6,11 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 09:45:56 by atahiri           #+#    #+#             */
-/*   Updated: 2021/05/24 10:15:43 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/05/24 10:50:51 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 int	ft_gnl(char **line)
 {

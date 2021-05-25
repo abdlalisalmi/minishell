@@ -6,7 +6,7 @@
 #    By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/03 18:34:17 by aes-salm          #+#    #+#              #
-#    Updated: 2021/05/24 10:16:54 by aes-salm         ###   ########.fr        #
+#    Updated: 2021/05/24 10:51:44 by aes-salm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ CFLAGS	= -Wall -Werror -Wextra
 OBJS	= $(SRCS:.c=.o)
 SRCS 	=	minishell.c\
 			functions/ft_strlen.c\
+			functions/ft_strjoin.c\
 			functions/ft_gnl.c\
 			
 
