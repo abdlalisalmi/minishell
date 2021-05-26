@@ -6,7 +6,7 @@
 #    By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/03 18:34:17 by aes-salm          #+#    #+#              #
-#    Updated: 2021/05/26 11:08:28 by aes-salm         ###   ########.fr        #
+#    Updated: 2021/05/26 21:23:14 by aes-salm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,10 @@ SRCS 	=	functions/ft_strlen.c\
 			execution/builtins/ft_pwd.c\
 			execution/builtins/ft_cd.c\
 			execution/builtins/ft_export.c\
+			execution/builtins/ft_unset.c\
+			execution/builtins/ft_env.c\
+			execution/builtins/ft_exit.c\
+			execution/builtins/ft_echo.c\
 
 			
 			

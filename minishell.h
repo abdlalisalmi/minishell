@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 14:02:06 by atahiri           #+#    #+#             */
-/*   Updated: 2021/05/26 17:29:17 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/05/26 21:19:45 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ t_all	g_all;
 char	*ft_pwd(void);
 int		ft_cd(char *path, int fd);
 int		ft_export(char **args);
+void	ft_unset(char **args);
+void	ft_env(void);
+void	ft_exit(void);
+void 	ft_echo(char **args, int fd);
+
 void	collect_env(char **envp);
 char	*get_env(char *name);
 int		set_env(char *name, char *value);

@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:13:03 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/05/26 13:01:29 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/05/26 21:47:56 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,25 +41,60 @@ int main(int argc, char **argv, char **envp)
 	// printf("PWD = %s\n", env);
 
 	/* Testing Export */
-	char **var = malloc(sizeof(char*) * 3);
-	var[0] = ft_strdup("abdlali=hello world");
-	var[1] = ft_strdup("amine===hello world");
-	var[2] = ft_strdup("test===hello world");
-	ft_export(var);
+	// char **var = malloc(sizeof(char*) * 1);
+	// var[0] = ft_strdup("abdlali=hello world");
+	// ft_export(var);
 
-	*var = ft_strdup("abdlali");
-	ft_export(var);
+	// *var = ft_strdup("abdlali");
+	// ft_export(var);
 
-	int i = -1;
-	while (++i <= g_all.n_env)
-	{
-		ft_putstr_fd(g_all.env[i].name, 1);
-		ft_putstr_fd("\t = \t", 1);
-		ft_putstr_fd(g_all.env[i].value, 1);
-		ft_putstr_fd("\n", 1);
-	}
+	// printf("--------------------------------------\n");
+	// int i = -1;
+	// while (++i <= g_all.n_env)
+	// {
+	// 	ft_putstr_fd(g_all.env[i].name, 1);
+	// 	ft_putstr_fd("\t = \t", 1);
+	// 	ft_putstr_fd(g_all.env[i].value, 1);
+	// 	ft_putstr_fd("\n", 1);
+	// }
+	// printf("--------------------------------------\n");
 
 	/* End Testing Export */
+
+
+	/* Testing Unset */
+	// char **unset = malloc(sizeof(char*) * 1);
+	// unset[0] = ft_strdup("abdlali");
+	// ft_unset(unset);
+
+	// printf("--------------------------------------\n");
+	// i = -1;
+	// while (++i <= g_all.n_env)
+	// {
+	// 	ft_putstr_fd(g_all.env[i].name, 1);
+	// 	ft_putstr_fd("\t = \t", 1);
+	// 	ft_putstr_fd(g_all.env[i].value, 1);
+	// 	ft_putstr_fd("\n", 1);
+	// }
+	// printf("--------------------------------------\n");
+	/* End Testing Unsett */
+
+	/* Testing env */
+	// ft_env();
+	/* End Testing env */
+
+	/* Testing exit */
+	// ft_exit();
+	/* End Testing exit */
+
+	/* Testing echo */
+	char **echo = malloc(sizeof(char*) * 3);
+	echo[0] = ft_strdup("-n");
+	echo[1] = ft_strdup("-n");
+	echo[2] = ft_strdup("abdlali-");
+	ft_echo(echo, 1);
+	/* End Testing echo */
+	
 
 	return (0);
 }
