@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 14:02:06 by atahiri           #+#    #+#             */
-/*   Updated: 2021/05/25 21:35:40 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/05/26 14:24:25 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ int			ft_strlen(char *s);
 char		*ft_strjoin(char *s, char c);
 void		start_parsing(char *line);
 char		**ft_split(const char *ss, char c);
+char		*trim_spaces(char *str);
 
 #endif
