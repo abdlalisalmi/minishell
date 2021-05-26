@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 14:02:06 by atahiri           #+#    #+#             */
-/*   Updated: 2021/05/26 11:08:18 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/05/26 17:29:17 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,6 @@ int			ft_strlen(char *s);
 char		*ft_strjoin(char *s, char c);
 void		start_parsing(char *line);
 char		**ft_split(const char *ss, char c);
+char		*trim_spaces(char *str);
 
 #endif
