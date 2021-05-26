@@ -6,7 +6,7 @@
 #    By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/03 18:34:17 by aes-salm          #+#    #+#              #
-#    Updated: 2021/05/25 21:10:54 by aes-salm         ###   ########.fr        #
+#    Updated: 2021/05/26 11:08:28 by aes-salm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,13 @@ SRCS 	=	functions/ft_strlen.c\
 			functions/ft_memcopy.c\
 			functions/ft_strcmp.c\
 			functions/ft_strdup.c\
+			functions/ft_strchr.c\
+			functions/ft_isdigit.c\
 			parsing/parsing.c\
 			execution/env.c\
 			execution/builtins/ft_pwd.c\
 			execution/builtins/ft_cd.c\
+			execution/builtins/ft_export.c\
 
 			
 			

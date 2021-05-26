@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 14:02:06 by atahiri           #+#    #+#             */
-/*   Updated: 2021/05/25 21:35:40 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/05/26 11:08:18 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ t_all	g_all;
 /* ABDELAALI PROTOTYPES */
 char	*ft_pwd(void);
 int		ft_cd(char *path, int fd);
+int		ft_export(char **args);
 void	collect_env(char **envp);
 char	*get_env(char *name);
 int		set_env(char *name, char *value);
@@ -60,6 +61,8 @@ void	ft_putstr_fd(char *s, int fd);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 int		ft_strcmp(char *str1, char *str2);
 char	*ft_strdup(const char *str);
+char	*ft_strchr(const char *str, int c);
+int		ft_isdigit(int arg);
 
 
 
