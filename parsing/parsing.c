@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 11:50:02 by atahiri           #+#    #+#             */
-/*   Updated: 2021/05/26 14:24:44 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/05/27 00:27:25 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void		start_parsing(char *line)
 {
 	// trim spaces from line
 
-	trim_spaces(line);
+	// trim_spaces(line);
 	
 	// g_all.cmds = ft_split(line, ' ');
 	// int i = 0;

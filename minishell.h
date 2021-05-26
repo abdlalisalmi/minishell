@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 14:02:06 by atahiri           #+#    #+#             */
-/*   Updated: 2021/05/26 21:19:45 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/05/27 00:31:20 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <signal.h>
 
 # define PROMPT "minishell-1.0$ "
 # define COLOR "\033[0;33m"
@@ -85,5 +86,6 @@ char		*ft_strjoin(char *s, char c);
 void		start_parsing(char *line);
 char		**ft_split(const char *ss, char c);
 char		*trim_spaces(char *str);
+void		init_signals();
 
 #endif

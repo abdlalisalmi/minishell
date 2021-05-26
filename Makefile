@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+         #
+#    By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/03 18:34:17 by aes-salm          #+#    #+#              #
-#    Updated: 2021/05/26 21:23:14 by aes-salm         ###   ########.fr        #
+#    Updated: 2021/05/27 00:26:30 by atahiri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS 	=	functions/ft_strlen.c\
 			functions/ft_strchr.c\
 			functions/ft_isdigit.c\
 			parsing/parsing.c\
+			parsing/signals.c\
 			execution/env.c\
 			execution/builtins/ft_pwd.c\
 			execution/builtins/ft_cd.c\
