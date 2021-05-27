@@ -25,6 +25,7 @@ SRCS 	=	functions/ft_strlen.c\
 			functions/ft_isdigit.c\
 			parsing/parsing.c\
 			parsing/signals.c\
+			parsing/trim_spaces.c\
 			execution/env.c\
 			execution/builtins/ft_pwd.c\
 			execution/builtins/ft_cd.c\

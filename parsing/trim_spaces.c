@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 char	*trim_spaces(char *str)
 {
@@ -21,8 +21,8 @@ char	*trim_spaces(char *str)
 	int i = 0;
 	j = 0;
 	if (str[0] == '\0')
-		return (strdup(str));
-	len = strlen(str);
+		return (ft_strdup(str));
+	len = ft_strlen(str);
 	while ((str[i] == ' ' || str[i] == '\t') && str[i])
 		i++;
 	len -= 1;

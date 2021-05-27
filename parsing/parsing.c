@@ -15,9 +15,17 @@
 void		start_parsing(char *line)
 {
 	// trim spaces from line
-
-	// trim_spaces(line);
+	char *trimed = trim_spaces(line);
 	
+	if (*trimed == '|')
+		ft_putstr_fd("syntax error near unexpected token `|'\n", 1);
+	else if (*trimed == ';')
+		ft_putstr_fd("syntax error near unexpected token `;'\n", 1);
+	else 
+	{
+		write(1, trimed, ft_strlen(trimed));
+		write(1, "\n", 1);
+	}
 	// g_all.cmds = ft_split(line, ' ');
 	// int i = 0;
 	// while (g_all.cmds[i])

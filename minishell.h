@@ -21,6 +21,9 @@
 
 # define PROMPT "minishell-1.0$ "
 # define COLOR "\033[0;33m"
+# define PIPE 99
+# define SEMICOLON 88
+# define ENV	77
 
 /* ABDELAALI STRUCT */
 typedef struct 	s_env 
@@ -35,11 +38,18 @@ typedef struct 	s_env
 
 
 /* AMINE STRUCT */
+
+typedef struct s_command {
+	// int			i;
+	char		*command;
+	struct t_command 	*next_command;
+	struct t_command	*prev_command;
+}				t_command;
+
 typedef struct s_all {
-	int		ret;
-	char	*buff;
-	char	**cmds;
-	char	**args;
+	int			ret;
+	char		*buff;
+	t_command *first_command;
 	
 	int		n_env;
 	t_env	*env;
