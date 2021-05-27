@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 14:02:06 by atahiri           #+#    #+#             */
-/*   Updated: 2021/05/27 00:31:20 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/05/27 10:36:51 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct 	s_env
 
 /* AMINE STRUCT */
 typedef struct s_all {
+	int		ret;
 	char	*buff;
 	char	**cmds;
 	char	**args;
