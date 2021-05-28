@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 14:02:06 by atahiri           #+#    #+#             */
-/*   Updated: 2021/05/27 10:36:51 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/05/28 11:32:32 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,15 @@
 # include <string.h>
 # include <signal.h>
 
-# define PROMPT "minishell-1.0$ "
-# define COLOR "\033[0;33m"
-# define PIPE 99
-# define SEMICOLON 88
-# define ENV	77
+# define PROMPT			"minishell-1.0$ "
+# define COLOR			"\033[0;33m"
+# define PIPE			99
+# define SEMICOLON		88
+# define ARG			77
+# define CMD			66
+# define RIGHT			55
+# define DOUBLERIGHT	44
+# define LEFT			33
 
 /* ABDELAALI STRUCT */
 typedef struct 	s_env 
@@ -39,17 +43,20 @@ typedef struct 	s_env
 
 /* AMINE STRUCT */
 
-typedef struct s_command {
+typedef struct 			s_command {
 	// int			i;
-	char		*command;
+	char				*command;
+	int					token;
 	struct t_command 	*next_command;
 	struct t_command	*prev_command;
-}				t_command;
+}						t_command;
 
 typedef struct s_all {
 	int			ret;
 	char		*buff;
-	t_command *first_command;
+	t_command	*first_command;
+	int			s_quote;
+	int			d_quote;
 	
 	int		n_env;
 	t_env	*env;

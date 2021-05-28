@@ -6,17 +6,97 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 11:50:02 by atahiri           #+#    #+#             */
-/*   Updated: 2021/05/27 00:27:25 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/05/28 17:49:09 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+void		verif_backslash_squote(char *line, int i)
+{
+	int backslash;
+
+	backslash = 0;
+	while (i >= 0 && line[i] == '\\')
+	{
+		backslash++;
+		i--;
+	}
+	backslash = backslash % 2;
+	if (backslash == 0 && g_all.s_quote == 0)
+	{
+		g_all.s_quote = 1;
+		return ;
+	}
+	if (backslash == 0 && g_all.s_quote == 1)
+	{
+		g_all.s_quote = 0;
+		return ;
+	}
+}
+
+void		verif_backslash_dquote(char *line, int i)
+{
+	int backslash;
+
+	backslash = 0;
+	while (i >= 0 && line[i] == '\\')
+	{
+		backslash++;
+		i--;
+	}
+	backslash = backslash % 2;
+	if (backslash == 0 && g_all.d_quote == 0)
+	{
+		g_all.d_quote = 1;
+		return ;
+	}
+	if (backslash == 0 && g_all.d_quote == 1)
+	{
+		g_all.d_quote = 0;
+		return ;
+	}
+}
+
+int			verif_quotes(char *line)
+{
+	int i;
+
+	i = -1;
+	g_all.d_quote = 0;
+	g_all.s_quote = 0;
+	while (line[++i] != '\0')
+	{
+		if ((line[i] == '\"' && g_all.d_quote == 0 && i == 0) || (line[i] ==
+'\"' && g_all.d_quote == 0 && line[i - 1] != '\\' && g_all.s_quote == 0))
+			g_all.d_quote = 1;
+		else if (line[i] == '\"' && g_all.d_quote == 1 && line[i - 1] != '\\')
+			g_all.d_quote = 0;
+		if ((line[i] == '\'' && g_all.s_quote == 0 && i == 0) || (line[i] ==
+'\'' && g_all.s_quote == 0 && line[i - 1] != '\\' && g_all.d_quote == 0))
+			g_all.s_quote = 1;
+		else if (line[i] == '\'' && g_all.s_quote == 1 && line[i - 1] != '\\')
+			g_all.s_quote = 0;
+		if (i != 0 && line[i] == '\'' && line[i - 1] == '\\')
+			verif_backslash_squote(line, i - 1);
+		if (i != 0 && line[i] == '\"' && line[i - 1] == '\\')
+			verif_backslash_dquote(line, i - 1);
+	}
+	if (g_all.s_quote == 1 || g_all.d_quote == 1)
+		return (-1);
+	return (0);
+}
 
 void		start_parsing(char *line)
 {
 	// trim spaces from line
 	char *trimed = trim_spaces(line);
 	
+	if (verif_quotes(trimed) == -1)
+	{
+		ft_putstr_fd("Error : quote not closed\n", 2);
+	}
+
 	if (*trimed == '|')
 		ft_putstr_fd("syntax error near unexpected token `|'\n", 1);
 	else if (*trimed == ';')
