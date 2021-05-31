@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:13:03 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/05/26 21:47:56 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/05/31 10:07:15 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,11 @@ int main(int argc, char **argv, char **envp)
 	/* End Testing exit */
 
 	/* Testing echo */
-	char **echo = malloc(sizeof(char*) * 3);
+	char **echo = malloc(sizeof(char*) * 5);
 	echo[0] = ft_strdup("-n");
-	echo[1] = ft_strdup("-n");
-	echo[2] = ft_strdup("abdlali-");
+	echo[1] = ft_strdup("-nnn");
+	echo[2] = ft_strdup("abdlali:");
+	echo[3] = ft_strdup("-n");
 	ft_echo(echo, 1);
 	/* End Testing echo */
 	
