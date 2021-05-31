@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:07:23 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/05/25 21:35:32 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/05/31 10:58:44 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 char *ft_pwd(void)
 {
-	int i;
 	char pwd[2048];
 
 	if (!getcwd(pwd, 2048))
 		return (NULL);
-	i = -1;
+	set_env("?", "0");
 	return (ft_strdup(pwd));
 }

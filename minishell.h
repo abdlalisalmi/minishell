@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 14:02:06 by atahiri           #+#    #+#             */
-/*   Updated: 2021/05/28 11:32:32 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/05/31 10:34:35 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int		ft_cd(char *path, int fd);
 int		ft_export(char **args);
 void	ft_unset(char **args);
 void	ft_env(void);
-void	ft_exit(void);
+void	ft_exit(int code);
 void 	ft_echo(char **args, int fd);
 
 void	collect_env(char **envp);

@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 21:13:35 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/05/31 10:05:48 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/05/31 10:55:44 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,5 @@ void ft_echo(char **args, int fd)
 	}
 	if (!remove_nl)
 		write(fd, "\n", 1);
+	set_env("?", "0");
 }

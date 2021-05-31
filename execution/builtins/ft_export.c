@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 10:39:09 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/05/26 13:08:08 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/05/31 10:56:43 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,14 @@ int ft_export(char **args)
 			ft_putstr_fd("bash: export: `", 1);
 			ft_putstr_fd(args[i], 1);
 			ft_putstr_fd("': not a valid identifier\n", 1);
+			set_env("?", "1");
 		}
 		else
 			if (ft_strchr(args[i], '='))
+			{
 				set_env(get_env_name(args[i]), get_env_value(args[i]));
+				set_env("?", "0");
+			}
 	}
 	return (1);
 }
