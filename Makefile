@@ -6,7 +6,7 @@
 #    By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/03 18:34:17 by aes-salm          #+#    #+#              #
-#    Updated: 2021/05/27 00:26:30 by atahiri          ###   ########.fr        #
+#    Updated: 2021/06/02 10:29:37 by atahiri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS 	=	functions/ft_strlen.c\
 			parsing/parsing.c\
 			parsing/signals.c\
 			parsing/trim_spaces.c\
+			parsing/splitting_by_semicolon.c\
 			execution/env.c\
 			execution/builtins/ft_pwd.c\
 			execution/builtins/ft_cd.c\
@@ -56,7 +57,7 @@ fclean: 	clean
 re: 		fclean all
 
 amine: 		re
-			@ $(CC) $(FLAGS) minishell.c $(NAME) -o minishell
+			@ $(CC) $(FLAGS) minishell.c $(NAME) -o minishell -g3 -fsanitize=address
 			@ rm -rf $(NAME) minishell.a *.o
 
 abdlali: 	re

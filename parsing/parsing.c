@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 11:50:02 by atahiri           #+#    #+#             */
-/*   Updated: 2021/05/29 15:14:17 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/06/02 11:19:23 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,40 +98,39 @@ int			verif_quotes(char *line)
 	return (0);
 }
 
+void		print_out(char **to_print)
+{
+	int j = 0;
+	while (to_print[j])
+	{
+		write(1, to_print[j], ft_strlen(to_print[j]));
+		write(1, "\n", 1);
+		j++;
+	}
+}
+
+// char		**remove_whitespaces(char **buff)
+// {
+// 	int i = -1;
+// 	char	*trimmed;
+// 	while(buff[++i])
+// 		trimmed = trim_spaces(buff[i]);
+// 	return trimmed;
+// }
+
 void		start_parsing(char *line)
 {
 	// trim spaces from line
-	char *trimed = trim_spaces(line);
-	// verif_quotes(trimed);
+	char *trimed;
+	char **split_commands;
+	char **trim_commands;
+
 	
+	trimed = trim_spaces(line);
 	if (verif_quotes(trimed) == -1)
 		ft_putstr_fd("Error : quote not closed\n", 2);
 	starts_with(trimed);
-	// else 
-	// {
-	// 	write(1, trimed, ft_strlen(trimed));
-	// 	write(1, "\n", 1);
-	// }
-	// g_all.cmds = ft_split(line, ' ');
-	// int i = 0;
-	// while (g_all.cmds[i])
-	// {
-	// 	// write(1, g_all.cmds[i], ft_strlen(g_all.cmds[i]));
-	// 	// write(1, "\n", 1);
-	// 	if (g_all.cmds[i][0] == '>' || g_all.cmds[i][0] == '<')
-	// 		write(1, "TOKEN: REDIRECTION\n", 19);
-	// 	else if (g_all.cmds[i][0] == '$')
-	// 		write(1, "TOKEN: ENV\n", 11);
-	// 	else if (g_all.cmds[i][0] == '|')
-	// 		write(1, "TOKEN: PIPE\n", 12);
-	// 	else if (g_all.cmds[i][0] == ';')
-	// 		write(1, "TOKEN: SEMICOLON\n", 17);
-	// 	else
-	// 	{
-	// 		write(1, "COMMAND: ", 9);
-	// 		write(1, g_all.cmds[i], ft_strlen(g_all.cmds[i]));
-	// 		write(1, "\n", 1);
-	// 	}
-	// 	i++;
-	// }
+	split_commands = splitting_by_semicolon(trimed);
+	//trim_commands = remove_whitespaces(split_commands);
+	print_out(split_commands);
 }

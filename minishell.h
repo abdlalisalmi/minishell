@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 14:02:06 by atahiri           #+#    #+#             */
-/*   Updated: 2021/05/28 11:32:32 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/06/02 11:01:04 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ char		*ft_strjoin(char *s, char c);
 void		start_parsing(char *line);
 char		**ft_split(const char *ss, char c);
 char		*trim_spaces(char *str);
-void		init_signals();
+void		init_signals(void);
+char		**splitting_by_semicolon(char *buff);
 
 #endif
