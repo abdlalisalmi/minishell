@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signals.c                                          :+:      :+:    :+:   */
+/*   splitting_by_semicolon.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/27 00:20:19 by atahiri           #+#    #+#             */
-/*   Updated: 2021/05/27 10:41:16 by atahiri          ###   ########.fr       */
+/*   Created: 2021/05/30 16:52:34 by atahiri           #+#    #+#             */
+/*   Updated: 2021/06/02 10:26:52 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/* SIGINT is for Ctrl-C, SIGSTP is for Ctrl-Z, SIGQUIT is for Ctrl-\ */
-
-void		signal_handlers(int sig)
+int		number_of_semicolons(char *buff)
 {
-	if (sig == SIGINT)
+	int i = -1;
+	int nb = 0;
+	while (buff[++i])
 	{
-		g_all.buff = NULL;
-		write(1, "\n", 1);
-		write(1, COLOR PROMPT, ft_strlen(PROMPT) + ft_strlen(COLOR));
+		if (buff[i] == ';')
+			nb++;
 	}
+	return nb;
 }
 
-void		init_signals(void)
+char        **splitting_by_semicolon(char *buff)
 {
-	signal(SIGINT, signal_handlers);
+    char **splitted;
+    int		nb;
+	int		i = -1;
+    
+	nb = number_of_semicolons(buff);
+	splitted = malloc(sizeof(char *) * nb);
+    splitted = ft_split(buff, ';');
+	return splitted;
 }

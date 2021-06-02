@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/03/03 18:34:17 by aes-salm          #+#    #+#              #
-#    Updated: 2021/06/02 10:50:42 by aes-salm         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME	= minishell.a
 CC		= gcc
 CFLAGS	= -Wall -Werror -Wextra
@@ -26,6 +14,7 @@ SRCS 	=	functions/ft_strlen.c\
 			parsing/parsing.c\
 			parsing/signals.c\
 			parsing/trim_spaces.c\
+			parsing/splitting_by_semicolon.c\
 			execution/env.c\
 			execution/history.c\
 			execution/builtins/ft_pwd.c\
@@ -57,7 +46,7 @@ fclean: 	clean
 re: 		fclean all
 
 amine: 		re
-			@ $(CC) $(FLAGS) minishell.c $(NAME) -o minishell
+			@ $(CC) $(FLAGS) minishell.c $(NAME) -o minishell -g3 -fsanitize=address
 			@ rm -rf $(NAME) minishell.a *.o
 
 abdlali: 	re

@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/01 14:02:06 by atahiri           #+#    #+#             */
-/*   Updated: 2021/06/01 19:27:18 by aes-salm         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
@@ -114,6 +102,7 @@ char		*ft_strjoin(char *s, char c);
 void		start_parsing(char *line);
 char		**ft_split(const char *ss, char c);
 char		*trim_spaces(char *str);
-void		init_signals();
+void		init_signals(void);
+char		**splitting_by_semicolon(char *buff);
 
 #endif
