@@ -6,17 +6,22 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:13:03 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/05/31 11:02:19 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/02 14:43:01 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+void init_struct(void)
+{
+	g_all.history.n_commands = 0;
+}
+
 int main(int argc, char **argv, char **envp)
 {
-
+	init_struct();
 	collect_env(envp);
-	set_env("?", "123456789");
+	// set_env("?", "123456789");
 	/* Print the env variables */
 		// int i = -1;
 		// while (++i <= g_all.n_env)
@@ -26,6 +31,19 @@ int main(int argc, char **argv, char **envp)
 		// 	ft_putstr_fd(g_all.env[i].value, 1);
 		// 	ft_putstr_fd("\n", 1);
 		// }
+	
+	/* Init History */
+	add_to_history("hello world");
+	// add_to_history("hello ncjgt");
+	add_to_history("hello ncjngttc");
+	// add_to_history("hello ncgtgjnc");
+
+	// int i = -1;
+	// while (++i < g_all.history.n_commands)
+	// 	printf("%s\n", g_all.history.commands[i]);
+	
+
+	/* End Init History */
 
 	// char *env = get_env("PWD");
 	// printf("PWD = %s\n", env);
@@ -103,6 +121,7 @@ int main(int argc, char **argv, char **envp)
 	// echo[3] = ft_strdup("-n");
 	// ft_echo(echo, 1);
 	/* End Testing echo */
+
 	
 
 	return (0);

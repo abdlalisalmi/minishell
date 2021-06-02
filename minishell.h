@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 14:02:06 by atahiri           #+#    #+#             */
-/*   Updated: 2021/05/31 10:34:35 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/01 19:27:18 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <signal.h>
+# include <fcntl.h>
 
 # define PROMPT			"minishell-1.0$ "
 # define COLOR			"\033[0;33m"
@@ -29,6 +30,8 @@
 # define DOUBLERIGHT	44
 # define LEFT			33
 
+# define HISTSIZE		1000
+
 /* ABDELAALI STRUCT */
 typedef struct 	s_env 
 {
@@ -36,7 +39,11 @@ typedef struct 	s_env
 	char 		*value;
 }				t_env;
 
-
+typedef struct	s_history
+{
+	char		**commands;
+	int			n_commands;
+}				t_history;
 
 
 
@@ -60,6 +67,7 @@ typedef struct s_all {
 	
 	int		n_env;
 	t_env	*env;
+	t_history	history;
 }				t_all;
 
 t_all	g_all;
@@ -80,6 +88,8 @@ void 	ft_echo(char **args, int fd);
 void	collect_env(char **envp);
 char	*get_env(char *name);
 int		set_env(char *name, char *value);
+
+void add_to_history(char *command);
 
 void	ft_putstr_fd(char *s, int fd);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
