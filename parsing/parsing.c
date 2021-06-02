@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 11:50:02 by atahiri           #+#    #+#             */
-/*   Updated: 2021/06/02 11:19:23 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/06/02 15:07:00 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,14 +109,13 @@ void		print_out(char **to_print)
 	}
 }
 
-// char		**remove_whitespaces(char **buff)
-// {
-// 	int i = -1;
-// 	char	*trimmed;
-// 	while(buff[++i])
-// 		trimmed = trim_spaces(buff[i]);
-// 	return trimmed;
-// }
+char		*remove_whitespaces(char *buff)
+{
+	int i = -1;
+	char	*trimmed;
+	trimmed = trim_spaces(buff);
+	return trimmed;
+}
 
 void		start_parsing(char *line)
 {
@@ -131,6 +130,8 @@ void		start_parsing(char *line)
 		ft_putstr_fd("Error : quote not closed\n", 2);
 	starts_with(trimed);
 	split_commands = splitting_by_semicolon(trimed);
-	//trim_commands = remove_whitespaces(split_commands);
-	print_out(split_commands);
+	int i = -1;
+	while (split_commands[++i])
+		trim_commands[i] = ft_strdup(remove_whitespaces(split_commands[i]));
+	print_out(trim_commands);
 }
