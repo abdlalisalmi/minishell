@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 13:03:15 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/05/26 17:59:17 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/05/31 10:58:07 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	update_env(char *name)
 	{
 		if (!ft_strcmp(g_all.env[i].name, name))
 		{
-			// printf("%s - %s\n", name, g_all.env[i].name);
 			g_all.env[index].name = g_all.env[i].name;
 			g_all.env[index].value = g_all.env[i].value;
 			index++;
@@ -49,8 +48,12 @@ void	ft_unset(char **args)
 			ft_putstr_fd("bash: unset:: `", 1);
 			ft_putstr_fd(args[i], 1);
 			ft_putstr_fd("': not a valid identifier\n", 1);
+			set_env("?", "1");
 		}
 		else
+		{
 			update_env(args[i]);
+			set_env("?", "0");
+		}
 	}
 }
