@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:13:03 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/06/02 14:43:01 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/02 20:55:36 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,14 @@ int main(int argc, char **argv, char **envp)
 	
 	/* Init History */
 	add_to_history("hello world");
-	// add_to_history("hello ncjgt");
-	add_to_history("hello ncjngttc");
+	printf("--------\n");
+	add_to_history("hello abdlali");
+	printf("--------\n");
+	add_to_history("hello ncj");
+	printf("--------\n");
+	add_to_history("hello amine");
+	printf("--------\n");
+	add_to_history("hello amincdcd");
 	// add_to_history("hello ncgtgjnc");
 
 	// int i = -1;
