@@ -41,12 +41,12 @@ clean:
 			@rm -rf *.o functions/*.o parsing/*.o execution/*.o a.out
 
 fclean: 	clean
-			@rm -rf $(NAME) minishell a.out
+			@rm -rf $(NAME) minishell a.out minishell.dSYM
 
 re: 		fclean all
 
 amine: 		re
-			@ $(CC) $(FLAGS) minishell.c $(NAME) -o minishell -g3 -fsanitize=address
+			@ $(CC) $(FLAGS) minishell.c $(NAME) -o minishell -g
 			@ rm -rf $(NAME) minishell.a *.o
 
 abdlali: 	re
