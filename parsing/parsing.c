@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 11:50:02 by atahiri           #+#    #+#             */
-/*   Updated: 2021/06/02 15:07:00 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/06/03 12:46:51 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,16 +122,19 @@ void		start_parsing(char *line)
 	// trim spaces from line
 	char *trimed;
 	char **split_commands;
-	char **trim_commands;
+	int nb = number_of_semicolons(line);
+	char **trim_commands = malloc(sizeof(char *) * nb);
 
 	
 	trimed = trim_spaces(line);
+	// write(1, &nb, 1);
 	if (verif_quotes(trimed) == -1)
 		ft_putstr_fd("Error : quote not closed\n", 2);
 	starts_with(trimed);
 	split_commands = splitting_by_semicolon(trimed);
 	int i = -1;
 	while (split_commands[++i])
-		trim_commands[i] = ft_strdup(remove_whitespaces(split_commands[i]));
-	print_out(trim_commands);
+		trim_commands[i] = remove_whitespaces(split_commands[i]);
+	// char *hh = trim_spaces(split_commands[0]);
+	// print_out(trim_commands);
 }

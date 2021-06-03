@@ -104,5 +104,6 @@ char		**ft_split(const char *ss, char c);
 char		*trim_spaces(char *str);
 void		init_signals(void);
 char		**splitting_by_semicolon(char *buff);
+int			number_of_semicolons(char *buff);
 
 #endif
