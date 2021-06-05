@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:13:03 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/06/02 20:55:36 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/04 11:58:27 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,28 @@ int main(int argc, char **argv, char **envp)
 	init_struct();
 	collect_env(envp);
 	// set_env("?", "123456789");
+	// printf("%s\n", get_env("?"));
 	/* Print the env variables */
-		// int i = -1;
-		// while (++i <= g_all.n_env)
-		// {
-		// 	ft_putstr_fd(g_all.env[i].name, 1);
-		// 	ft_putstr_fd("\t = \t", 1);
-		// 	ft_putstr_fd(g_all.env[i].value, 1);
-		// 	ft_putstr_fd("\n", 1);
-		// }
+	// int i = 0;
+	// while (i < g_all.n_env)
+	// {
+	// 	ft_putstr_fd(g_all.env[i].name, 1);
+	// 	ft_putstr_fd("\t = \t", 1);
+	// 	ft_putstr_fd(g_all.env[i].value, 1);
+	// 	ft_putstr_fd("\n", 1);
+	// 	i++;
+	// }
 	
 	/* Init History */
-	add_to_history("hello world");
-	printf("--------\n");
-	add_to_history("hello abdlali");
-	printf("--------\n");
-	add_to_history("hello ncj");
-	printf("--------\n");
-	add_to_history("hello amine");
-	printf("--------\n");
-	add_to_history("hello amincdcd");
+	// add_to_history("hello world");
+	// printf("--------\n");
+	// add_to_history("hello abdlali");
+	// printf("--------\n");
+	// add_to_history("hello ncj");
+	// printf("--------\n");
+	// add_to_history("hello amine");
+	// printf("--------\n");
+	// add_to_history("hello amincdcd");
 	// add_to_history("hello ncgtgjnc");
 
 	// int i = -1;
@@ -128,7 +130,8 @@ int main(int argc, char **argv, char **envp)
 	// ft_echo(echo, 1);
 	/* End Testing echo */
 
-	
+	if (execve("/bin/echo", argv, envp) == -1)
+    	printf("ERROR\n");
 
 	return (0);
 }

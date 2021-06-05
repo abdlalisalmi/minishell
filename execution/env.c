@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 18:56:23 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/05/25 21:20:10 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/04 11:57:31 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,13 @@ char *get_env(char *name)
 {
 	int i;
 
-	i = -1;
-	while (++i <= g_all.n_env)
+	i = 0;
+	while (i < g_all.n_env)
+	{
 		if (ft_strcmp(name, g_all.env[i].name))
 			return (g_all.env[i].value);
+		i++;
+	}
 	return (NULL);
 }
 
@@ -43,17 +46,18 @@ int	set_env(char *name, char *value)
 {
 	int i;
 
-	i = -1;
-	while (++i <= g_all.n_env)
+	i = 0;
+	while (i < g_all.n_env)
 	{
 		if (ft_strcmp(name, g_all.env[i].name))
 		{
 			g_all.env[i].value = ft_strdup(value);
 			return (1);
 		}
+		i++;
 	}
-	g_all.n_env++;
 	g_all.env[g_all.n_env].name = ft_strdup(name);
 	g_all.env[g_all.n_env].value = ft_strdup(value);
+	g_all.n_env++;
 	return (1);
 }

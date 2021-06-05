@@ -7,6 +7,7 @@
 # include <string.h>
 # include <signal.h>
 # include <fcntl.h>
+#include <errno.h>
 
 # define PROMPT			"minishell-1.0$ "
 # define COLOR			"\033[0;33m"
