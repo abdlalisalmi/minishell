@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 14:01:52 by atahiri           #+#    #+#             */
-/*   Updated: 2021/05/28 11:34:16 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/06/03 14:30:14 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ void	init_struct()
 	g_all.first_command = NULL;
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, char **argv, char **envp)
 {
 
 	(void)argc;
 	(void)argv;
+	(void)envp;
 	g_all.ret = 1;
 	init_signals();
 	init_struct();
