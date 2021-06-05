@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 14:01:52 by atahiri           #+#    #+#             */
-/*   Updated: 2021/06/05 12:08:14 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/05 15:35:55 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	init_struct()
-{
-	g_all.first_command = NULL;
-}
+// void	init_struct()
+// {
+	
+// }
+
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -25,7 +26,7 @@ int	main(int argc, char **argv, char **envp)
 	(void)envp;
 	g_all.ret = 1;
 	init_signals();
-	init_struct();
+	// init_struct();
 	while (g_all.ret > 0)
 	{
 		write(1, COLOR PROMPT, ft_strlen(PROMPT) + ft_strlen(COLOR));
