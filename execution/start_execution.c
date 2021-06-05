@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   start_execution.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:13:03 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/06/05 11:58:32 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/05 15:40:41 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@ void init_struct(void)
 	g_all.history.n_commands = 0;
 }
 
-int main(int argc, char **argv, char **envp)
+void test(void)
 {
-	init_struct();
-	collect_env(envp);
 	// set_env("?", "123456789");
 	// printf("%s\n", get_env("?"));
 	/* Print the env variables */
@@ -130,16 +128,31 @@ int main(int argc, char **argv, char **envp)
 	// ft_echo(echo, 1);
 	/* End Testing echo */
 
-	if (execve("/bin/echo", argv, envp) == -1)
-    	printf("ERROR\n");
+	// if (execve("/bin/echo", argv, envp) == -1)
+    // 	printf("ERROR\n");
 
-	// int pid;
+	// pid_t pid;
+	// int status;
 	// pid = fork();
 
 	// if (pid == 0)
+	// {
 	// 	printf("I'm the child\n");
-	// else if (pid > 0)
-	// 	printf("I'm the parent\n");
+	// }
+	// else if (pid < 0)
+	// 	printf("FORK ERROR\n");
+	// else
+	// 	waitpid(pid, &status, 0);
 
-	return (0);
+	// printf("status : %d\n", status);
+}
+
+
+void start_execution(char **envp)
+{
+	init_struct();
+	collect_env(envp);
+
+	/*Tests*/
+	test();
 }
