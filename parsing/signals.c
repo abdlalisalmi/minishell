@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 00:20:19 by atahiri           #+#    #+#             */
-/*   Updated: 2021/06/04 12:11:47 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/06/05 12:10:16 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,8 @@ void		signal_handlers(int sig)
 {
 	if (sig == SIGINT)
 	{
-		if (g_all.buff != NULL)
-		{
-			free(g_all.buff);
-			write(1, "\n", 1);
-			write(1, COLOR PROMPT, ft_strlen(PROMPT) + ft_strlen(COLOR));
-		}
+		write(1, "\n", 1);
+		write(1, COLOR PROMPT, ft_strlen(PROMPT) + ft_strlen(COLOR));
 	}
 }
 

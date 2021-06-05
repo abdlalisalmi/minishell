@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:13:03 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/06/04 11:58:27 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/05 11:58:32 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,14 @@ int main(int argc, char **argv, char **envp)
 
 	if (execve("/bin/echo", argv, envp) == -1)
     	printf("ERROR\n");
+
+	// int pid;
+	// pid = fork();
+
+	// if (pid == 0)
+	// 	printf("I'm the child\n");
+	// else if (pid > 0)
+	// 	printf("I'm the parent\n");
 
 	return (0);
 }
