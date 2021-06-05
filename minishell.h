@@ -40,17 +40,14 @@ typedef struct	s_history
 /* AMINE STRUCT */
 
 typedef struct 			s_command {
-	// int			i;
 	char				*command;
-	int					token;
-	struct t_command 	*next_command;
-	struct t_command	*prev_command;
+	char 				**args;
 }						t_command;
 
 typedef struct s_all {
 	int			ret;
 	char		*buff;
-	t_command	*first_command;
+	t_command	*commands;
 	int			s_quote;
 	int			d_quote;
 	
