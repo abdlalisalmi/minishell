@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:13:03 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/06/05 15:40:41 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/05 16:59:27 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,11 +148,42 @@ void test(void)
 }
 
 
-void start_execution(char **envp)
+
+void single_command(char **paths)
+{
+	
+}
+
+void start_execution()
+{
+	char **paths;
+
+	
+	paths = ft_split(get_env("PATH"), ':');
+	// int i = -1;
+	// while (paths[++i])
+	// {
+	// 	printf("|%s|\n", paths[i]);
+	// }
+
+	// g_all.commands = malloc(sizeof(char*) * 2);
+	// g_all.commands[0].command = ft_strdup("echo");
+	// g_all.commands[0].args = malloc(sizeof(char*) * 2);
+	// g_all.commands[0].args[0] = ft_strdup("hello");
+	// g_all.commands[0].args[1] = ft_strdup("world");
+	// printf("%s %s %s\n", g_all.commands[0].command, g_all.commands[0].args[0], g_all.commands[0].args[1]);
+
+
+	/*Tests*/
+	// test();
+}
+
+int main(int argc, char **argv, char **envp)
 {
 	init_struct();
 	collect_env(envp);
-
-	/*Tests*/
-	test();
+	ft_cd("--", 1);
+	printf("%s\n", ft_pwd());
+	printf("$? = %s\n", get_env("?"));
+	// start_execution();
 }

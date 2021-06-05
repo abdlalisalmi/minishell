@@ -77,7 +77,7 @@ int		set_env(char *name, char *value);
 
 void	add_to_history(char *command);
 
-void	start_execution(char **argv, char **envp);
+void	start_execution();
 
 void	ft_putstr_fd(char *s, int fd);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
