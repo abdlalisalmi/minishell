@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 11:50:02 by atahiri           #+#    #+#             */
-/*   Updated: 2021/06/05 12:13:27 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/06/05 15:52:55 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,30 @@ void		verif_backslash_dquote(char *line, int i)
 	}
 }
 
+int			check_semicolon(char *line)
+{
+	int i = -1;
+	// int found = 0;
+
+	if (line[0] == ';')
+		ft_putstr_fd("syntax error near unexpected token `;'\n", 1);
+	while (line[++i])
+	{
+		if (line[i] == ';')
+		{
+			if (line[i + 1] == ';')
+			{
+				ft_putstr_fd("syntax error near unexpected token `;;'\n", 1);
+			}
+		}
+	}
+	return 0;
+}
+
 int			starts_with(char *line)
 {
 	if (*line == '|')
 		ft_putstr_fd("syntax error near unexpected token `|'\n", 1);
-	else if (*line == ';')
-		ft_putstr_fd("syntax error near unexpected token `;'\n", 1);
 	else if (*line == '\\' && *(line+1) != '\\')
 		ft_putstr_fd(">\n", 1);
 	return (0);
@@ -130,7 +148,10 @@ void		start_parsing(char *line)
 	// write(1, &nb, 1);
 	if (verif_quotes(trimed) == -1)
 		ft_putstr_fd("Error : quote not closed\n", 2);
-	starts_with(trimed);
+	if (starts_with(trimed) || check_semicolon(trimed))
+		return;
+
+	
 	split_commands = splitting_by_semicolon(trimed);
 	int i = -1;
 	while (split_commands[++i])
