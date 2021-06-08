@@ -65,7 +65,7 @@ t_all	g_all;
 /* ABDELAALI PROTOTYPES */
 char	*ft_pwd(void);
 int		ft_cd(char *path, int fd);
-int		ft_export(char **args);
+int		ft_export(char **args, int fd);
 void	ft_unset(char **args);
 void	ft_env(void);
 void	ft_exit(int code);

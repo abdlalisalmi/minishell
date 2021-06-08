@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 18:07:46 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/05/31 10:55:57 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/08 09:44:28 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void ft_env(void)
 {
 	int i = -1;
-	while (++i <= g_all.n_env)
+	while (++i < g_all.n_env)
 	{
 		if (g_all.env[i].name)
 		{

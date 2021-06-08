@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:13:03 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/06/05 16:59:27 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/08 09:58:33 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,9 @@ void test(void)
 	// set_env("?", "123456789");
 	// printf("%s\n", get_env("?"));
 	/* Print the env variables */
-	// int i = 0;
-	// while (i < g_all.n_env)
-	// {
-	// 	ft_putstr_fd(g_all.env[i].name, 1);
-	// 	ft_putstr_fd("\t = \t", 1);
-	// 	ft_putstr_fd(g_all.env[i].value, 1);
-	// 	ft_putstr_fd("\n", 1);
-	// 	i++;
-	// }
+	// printf("--------------------------------------\n");
+	// ft_env();
+	// printf("--------------------------------------\n");
 	
 	/* Init History */
 	// add_to_history("hello world");
@@ -63,6 +57,9 @@ void test(void)
 	// printf("$? = %s\n", get_env("?"));
 	
 	// ft_cd("vfvf", 1);
+	// ft_cd("--", 1);
+	// printf("%s\n", ft_pwd());
+	// printf("$? = %s\n", get_env("?"));
 	// printf("$? = %s\n", get_env("?"));
 
 	// env = get_env("PWD");
@@ -70,23 +67,17 @@ void test(void)
 
 	/* Testing Export */
 	// char **var = malloc(sizeof(char*) * 1);
+	char **var = NULL;
 	// var[0] = ft_strdup("abdlali=hello world");
-	// ft_export(var);
-	// printf("$? = %s\n", get_env("?"));
+	// ft_export(var, 1);
+	// printf("$? = %s\n", get_env("abdlali"));
 
 	// *var = ft_strdup("1abdlali");
-	// ft_export(var);
+	ft_export(var, 1);
 	// printf("$? = %s\n", get_env("?"));
 
 	// printf("--------------------------------------\n");
-	// int i = -1;
-	// while (++i <= g_all.n_env)
-	// {
-	// 	ft_putstr_fd(g_all.env[i].name, 1);
-	// 	ft_putstr_fd("\t = \t", 1);
-	// 	ft_putstr_fd(g_all.env[i].value, 1);
-	// 	ft_putstr_fd("\n", 1);
-	// }
+	// ft_env();
 	// printf("--------------------------------------\n");
 
 	/* End Testing Export */
@@ -100,14 +91,7 @@ void test(void)
 
 
 	// printf("--------------------------------------\n");
-	// i = -1;
-	// while (++i <= g_all.n_env)
-	// {
-	// 	ft_putstr_fd(g_all.env[i].name, 1);
-	// 	ft_putstr_fd("\t = \t", 1);
-	// 	ft_putstr_fd(g_all.env[i].value, 1);
-	// 	ft_putstr_fd("\n", 1);
-	// }
+	// ft_env();
 	// printf("--------------------------------------\n");
 	/* End Testing Unsett */
 
@@ -157,7 +141,6 @@ void single_command(char **paths)
 void start_execution()
 {
 	char **paths;
-
 	
 	paths = ft_split(get_env("PATH"), ':');
 	// int i = -1;
@@ -173,17 +156,15 @@ void start_execution()
 	// g_all.commands[0].args[1] = ft_strdup("world");
 	// printf("%s %s %s\n", g_all.commands[0].command, g_all.commands[0].args[0], g_all.commands[0].args[1]);
 
-
-	/*Tests*/
-	// test();
 }
 
 int main(int argc, char **argv, char **envp)
 {
 	init_struct();
 	collect_env(envp);
-	ft_cd("--", 1);
-	printf("%s\n", ft_pwd());
-	printf("$? = %s\n", get_env("?"));
+
+	/*Tests*/
+	test();
+
 	// start_execution();
 }
