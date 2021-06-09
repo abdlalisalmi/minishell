@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 11:50:02 by atahiri           #+#    #+#             */
-/*   Updated: 2021/06/05 15:52:55 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/06/09 11:59:15 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,19 +61,14 @@ void		verif_backslash_dquote(char *line, int i)
 int			check_semicolon(char *line)
 {
 	int i = -1;
-	// int found = 0;
+	int found = 0;
 
 	if (line[0] == ';')
 		ft_putstr_fd("syntax error near unexpected token `;'\n", 1);
 	while (line[++i])
 	{
-		if (line[i] == ';')
-		{
-			if (line[i + 1] == ';')
-			{
-				ft_putstr_fd("syntax error near unexpected token `;;'\n", 1);
-			}
-		}
+		if (line[i] == ';' && line[i+1] == ';')
+			ft_putstr_fd("syntax error near unexpected token `;;'\n", 1);
 	}
 	return 0;
 }
