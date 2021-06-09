@@ -40,20 +40,23 @@ typedef struct	s_history
 /* AMINE STRUCT */
 
 typedef struct 			s_command {
-	char				*command;
+	// char				*cmd;
 	char 				**args;
+	int					n_args;
+	char				*outfile;
+	char				*inputfile;
 }						t_command;
 
 typedef struct s_all {
 	int			ret;
 	char		*buff;
-	t_command	*commands;
 	int			s_quote;
 	int			d_quote;
 	
 	int		n_env;
 	t_env	*env;
 	t_history	history;
+	t_command	*commands;
 }				t_all;
 
 t_all	g_all;
@@ -63,28 +66,46 @@ t_all	g_all;
 
 
 /* ABDELAALI PROTOTYPES */
+
+/*
+** Builtins commands
+*/
 char	*ft_pwd(void);
-int		ft_cd(char *path, int fd);
+int		ft_cd(char **args, int n_args);
 int		ft_export(char **args, int fd);
 void	ft_unset(char **args);
 void	ft_env(void);
 void	ft_exit(int code);
 void 	ft_echo(char **args, int fd);
 
+/*
+** Manage EnvVar functions
+*/
 void	collect_env(char **envp);
 char	*get_env(char *name);
 int		set_env(char *name, char *value);
 
+/*
+** Manage History functions
+*/
 void	add_to_history(char *command);
 
 void	start_execution();
+void	exec_single_cmd(char *cmd, char **args, char **envp);
+char	*get_cmd_path(char *cmd);
 
+/*
+** Help functions
+*/
 void	ft_putstr_fd(char *s, int fd);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 int		ft_strcmp(char *str1, char *str2);
 char	*ft_strdup(const char *str);
 char	*ft_strchr(const char *str, int c);
 int		ft_isdigit(int arg);
+char	*ft_strappend(char *s1, char *s2);
+void	free_d_pointer(char **ptr);
+int		ft_dplen(char **ptr);
 
 
 

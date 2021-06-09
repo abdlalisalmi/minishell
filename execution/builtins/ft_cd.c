@@ -6,49 +6,57 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 17:33:08 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/06/08 09:41:08 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/09 10:52:34 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-char exception_args(char **path, int fd)
+char exception_args(char **args)
 {
-	if (ft_strcmp(*path, "-"))
+	if (ft_strcmp(*args, "-"))
 	{
 		if (!get_env("OLDPWD"))
 		{
-			ft_putstr_fd("cd: OLDPWD not set\n", fd);
+			printf("cd: OLDPWD not set\n");
 			set_env("?", "1");
 			return (1);
 		}
 		else
 		{
-			*path = ft_strdup(get_env("OLDPWD"));
-			ft_putstr_fd(get_env("PWD"), fd);
-			ft_putstr_fd("\n", fd);
+			*args = ft_strdup(get_env("OLDPWD"));
+			printf("%s\n", get_env("PWD"));
 		}
 	}
 	else
-		*path = ft_strdup("..");
+		*args = ft_strdup("..");
 	return (0);
 }
 
-int ft_cd(char *path, int fd)
+int ft_cd(char **args, int n_args)
 {
-	if (ft_strcmp(path, "-") || ft_strcmp(path, "--"))
-		if (exception_args(&path, fd))
-			return (1);
-	if (chdir(path) == -1)
+	if (n_args >= 3)
 	{
-		ft_putstr_fd("cd: no such file or directory: ", fd);
-		ft_putstr_fd(path, fd);
-		ft_putstr_fd("\n", fd);
+		if (n_args == 3)
+			printf("cd: string not in pwd: %s\n", args[1]);
+		else
+			printf("cd: too many arguments\n");
 		set_env("?", "1");
-		return (1);
 	}
-	set_env("OLDPWD", get_env("PWD"));
-	set_env("PWD", ft_pwd());
-	set_env("?", "0");
+	else
+	{
+		if (ft_strcmp(args[1], "-") || ft_strcmp(args[1], "--"))
+			if (exception_args(&args[1]))
+				return (1);
+		if (chdir(args[1]) == -1)
+		{
+			printf("cd: no such file or directory: %s\n", args[1]);
+			set_env("?", "1");
+			return (1);
+		}
+		set_env("OLDPWD", get_env("PWD"));
+		set_env("PWD", ft_pwd());
+		set_env("?", "0");
+	}
 	return (0);
 }

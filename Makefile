@@ -11,12 +11,16 @@ SRCS 	=	functions/ft_strlen.c\
 			functions/ft_strdup.c\
 			functions/ft_strchr.c\
 			functions/ft_isdigit.c\
+			functions/ft_strappend.c\
+			functions/free_d_pointer.c\
+			functions/ft_dplen.c\
 			parsing/parsing.c\
 			parsing/signals.c\
 			parsing/trim_spaces.c\
 			parsing/splitting_by_semicolon.c\
 			execution/env.c\
 			execution/history.c\
+			execution/exec_single_cmd.c\
 			execution/builtins/ft_pwd.c\
 			execution/builtins/ft_cd.c\
 			execution/builtins/ft_export.c\
@@ -24,6 +28,7 @@ SRCS 	=	functions/ft_strlen.c\
 			execution/builtins/ft_env.c\
 			execution/builtins/ft_exit.c\
 			execution/builtins/ft_echo.c\
+			execution/functions/get_cmd_path.c\
 
 			
 			

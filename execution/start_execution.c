@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:13:03 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/06/08 09:58:33 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/09 12:09:01 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void test(void)
 	// printf("--------------------------------------\n");
 	// ft_env();
 	// printf("--------------------------------------\n");
-	
+
 	/* Init History */
 	// add_to_history("hello world");
 	// printf("--------\n");
@@ -41,7 +41,7 @@ void test(void)
 	// int i = -1;
 	// while (++i < g_all.history.n_commands)
 	// 	printf("%s\n", g_all.history.commands[i]);
-	
+
 
 	/* End Init History */
 
@@ -55,10 +55,16 @@ void test(void)
 
 	// ft_pwd();
 	// printf("$? = %s\n", get_env("?"));
+
+	g_all.commands = malloc(sizeof(char*) * 2);
+	g_all.commands[0].args = malloc(sizeof(char*) * 3);
+	g_all.commands[0].args[0] = ft_strdup("cd");
+	g_all.commands[0].args[1] = ft_strdup("..");
+	// g_all.commands[0].args[2] = ft_strdup("world");
+	g_all.commands[0].n_args = 2;
 	
-	// ft_cd("vfvf", 1);
-	// ft_cd("--", 1);
-	// printf("%s\n", ft_pwd());
+	ft_cd(g_all.commands[0].args, g_all.commands[0].n_args);
+	printf("%s\n", ft_pwd());
 	// printf("$? = %s\n", get_env("?"));
 	// printf("$? = %s\n", get_env("?"));
 
@@ -67,13 +73,13 @@ void test(void)
 
 	/* Testing Export */
 	// char **var = malloc(sizeof(char*) * 1);
-	char **var = NULL;
+	// char **var = NULL;
 	// var[0] = ft_strdup("abdlali=hello world");
 	// ft_export(var, 1);
 	// printf("$? = %s\n", get_env("abdlali"));
 
 	// *var = ft_strdup("1abdlali");
-	ft_export(var, 1);
+	// ft_export(var, 1);
 	// printf("$? = %s\n", get_env("?"));
 
 	// printf("--------------------------------------\n");
@@ -131,30 +137,18 @@ void test(void)
 	// printf("status : %d\n", status);
 }
 
-
-
-void single_command(char **paths)
+void start_execution(char **envp)
 {
-	
-}
-
-void start_execution()
-{
-	char **paths;
-	
-	paths = ft_split(get_env("PATH"), ':');
-	// int i = -1;
-	// while (paths[++i])
-	// {
-	// 	printf("|%s|\n", paths[i]);
-	// }
-
-	// g_all.commands = malloc(sizeof(char*) * 2);
-	// g_all.commands[0].command = ft_strdup("echo");
-	// g_all.commands[0].args = malloc(sizeof(char*) * 2);
-	// g_all.commands[0].args[0] = ft_strdup("hello");
-	// g_all.commands[0].args[1] = ft_strdup("world");
+	g_all.commands = malloc(sizeof(char*) * 2);
+	// g_all.commands[0].cmd = ft_strdup("echo");
+	g_all.commands[0].args = malloc(sizeof(char*) * 3);
+	g_all.commands[0].args[0] = ft_strdup("echo");
+	g_all.commands[0].args[1] = ft_strdup("hello");
+	g_all.commands[0].args[2] = ft_strdup("world");
 	// printf("%s %s %s\n", g_all.commands[0].command, g_all.commands[0].args[0], g_all.commands[0].args[1]);
+	printf("%d\n", ft_dplen(g_all.commands[0].args));
+
+	exec_single_cmd(g_all.commands[0].args[0], g_all.commands[0].args, envp);
 
 }
 
@@ -166,5 +160,5 @@ int main(int argc, char **argv, char **envp)
 	/*Tests*/
 	test();
 
-	// start_execution();
+	// start_execution(envp);
 }
