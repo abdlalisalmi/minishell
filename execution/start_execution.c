@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:13:03 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/06/09 12:09:01 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/09 21:05:13 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,15 +140,15 @@ void test(void)
 void start_execution(char **envp)
 {
 	g_all.commands = malloc(sizeof(char*) * 2);
-	// g_all.commands[0].cmd = ft_strdup("echo");
 	g_all.commands[0].args = malloc(sizeof(char*) * 3);
-	g_all.commands[0].args[0] = ft_strdup("echo");
-	g_all.commands[0].args[1] = ft_strdup("hello");
-	g_all.commands[0].args[2] = ft_strdup("world");
-	// printf("%s %s %s\n", g_all.commands[0].command, g_all.commands[0].args[0], g_all.commands[0].args[1]);
-	printf("%d\n", ft_dplen(g_all.commands[0].args));
+	g_all.commands[0].args[0] = ft_strdup("exit");
+	g_all.commands[0].args[1] = ft_strdup("55");
+	// g_all.commands[0].args[2] = ft_strdup("10");
+	// g_all.commands[0].args[3] = ft_strdup("world");
 
-	exec_single_cmd(g_all.commands[0].args[0], g_all.commands[0].args, envp);
+	exec_single_cmd(g_all.commands[0].args, 2, envp);
+
+	// exec_single_cmd(g_all.commands[0].args, 1, envp);
 
 }
 
@@ -158,7 +158,7 @@ int main(int argc, char **argv, char **envp)
 	collect_env(envp);
 
 	/*Tests*/
-	test();
+	// test();
 
-	// start_execution(envp);
+	start_execution(envp);
 }

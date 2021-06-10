@@ -6,15 +6,15 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:07:23 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/05/31 10:58:44 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/10 09:29:00 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-char *ft_pwd(void)
+char *ft_pwd(char **args, int n_args)
 {
-	char pwd[2048];
+	char pwd[4096];
 
 	if (!getcwd(pwd, 2048))
 		return (NULL);

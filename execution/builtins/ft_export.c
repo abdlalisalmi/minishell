@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 10:39:09 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/06/08 09:55:23 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/09 18:24:40 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,42 +42,32 @@ char *get_env_value(char *str)
 	return (value);
 }
 
-void	print_env(int fd)
+void	print_env(void)
 {
 	int i = -1;
 
 	while (++i < g_all.n_env)
 	{
 		if (g_all.env[i].name)
-		{
-			ft_putstr_fd("declare -x ", fd);
-			ft_putstr_fd(g_all.env[i].name, fd);
-			ft_putstr_fd("=", fd);
-			ft_putstr_fd("\"", fd);
-			ft_putstr_fd(g_all.env[i].value, fd);
-			ft_putstr_fd("\"", fd);
-			ft_putstr_fd("\n", fd);
-		}
+			printf("declare -x %s=\"%s\"\n", g_all.env[i].name, g_all.env[i].value);
 	}
 	set_env("?", "0");
 }
 
-int ft_export(char **args, int fd)
+int ft_export(char **args, int n_args)
 {
 	int i;
 
-	if (args == NULL)
-		print_env(fd);
+	if (n_args == 1)
+		print_env();
 	else
 	{
-		i = -1;
-		while (args[++i] != 0)
+		i = 0;
+		while (++i < n_args)
 		{
 			if (ft_isdigit(args[i][0]))
 			{
-				ft_putstr_fd("minishell-1.0: export: `", 1);
-				ft_putstr_fd(args[i], 1);
-				ft_putstr_fd("': not a valid identifier\n", 1);
+				printf("minishell: export: `%s': not a valid identifier\n", args[i]);
 				set_env("?", "1");
 			}
 			else

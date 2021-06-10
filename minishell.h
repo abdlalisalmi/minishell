@@ -8,6 +8,7 @@
 # include <signal.h>
 # include <fcntl.h>
 #include <errno.h>
+#include <limits.h>
 
 # define PROMPT			"minishell-1.0$ "
 # define COLOR			"\033[0;33m"
@@ -72,11 +73,11 @@ t_all	g_all;
 */
 char	*ft_pwd(void);
 int		ft_cd(char **args, int n_args);
-int		ft_export(char **args, int fd);
+int		ft_export(char **args, int n_args);
 void	ft_unset(char **args);
 void	ft_env(void);
-void	ft_exit(int code);
-void 	ft_echo(char **args, int fd);
+void	ft_exit(char **args, int n_args);
+void 	ft_echo(char **args);
 
 /*
 ** Manage EnvVar functions
@@ -91,7 +92,7 @@ int		set_env(char *name, char *value);
 void	add_to_history(char *command);
 
 void	start_execution();
-void	exec_single_cmd(char *cmd, char **args, char **envp);
+void	exec_single_cmd(char **args, int n_args, char **envp);
 char	*get_cmd_path(char *cmd);
 
 /*

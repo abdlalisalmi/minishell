@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 21:13:35 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/06/09 10:03:43 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/09 17:26:03 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,23 @@ int remove_new_line_check(char *arg)
 	return (0);
 }
 
-void ft_echo(char **args, int fd)
+void ft_echo(char **args)
 {
 	int i;
-	int j;
 	int remove_nl;
 
 	remove_nl = 0;
-	i = -1;
+	i = 0;
 	while (remove_new_line_check(args[++i]))
 		remove_nl++;
-	i = remove_nl - 1;
+	i = remove_nl;
 	while (args[++i] != 0)
 	{
-		j = -1;
-		while (args[i][++j])
-			write(fd, &args[i][j], 1);
+		printf("%s", args[i]);
 		if (args[i + 1])
-			write(fd, " ", 1);
+			printf(" ");
 	}
 	if (!remove_nl)
-		write(fd, "\n", 1);
+		printf("\n");
 	set_env("?", "0");
 }
