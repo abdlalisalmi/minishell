@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 11:50:02 by atahiri           #+#    #+#             */
-/*   Updated: 2021/06/09 13:38:38 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/06/10 09:28:33 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ int			verif_quotes(char *line)
 void		print_out(char **to_print)
 {
 	int j = 0;
-	while (to_print[j])
+	while (to_print[j] != '\0')
 	{
 		write(1, to_print[j], ft_strlen(to_print[j]));
 		write(1, "\n", 1);
@@ -133,22 +133,39 @@ char		*remove_whitespaces(char *buff)
 void		start_parsing(char *line)
 {
 	// trim spaces from line
-	char *trimed;
-	char **split_commands;
-	int nb = number_of_semicolons(line);
-	char **trim_commands = malloc(sizeof(char *) * nb);
+	if (line[0] != '\0')
+	{
+		char *trimed;
+		char **split_commands;
+		int nb = 0;
+		nb = number_of_semicolons(line);
+		char **trim_commands = malloc(sizeof(char *) * (nb));
 
-	
-	trimed = trim_spaces(line);
-	// write(1, &nb, 1);
-	if (verif_quotes(trimed) == -1)
-		ft_putstr_fd("Error : quote not closed\n", 2);
-	if (starts_with(trimed) || check_semicolon(trimed))
-		return;
-	split_commands = splitting_by_semicolon(trimed);
-	int i = -1;
-	while (split_commands[++i])
-		trim_commands[i] = remove_whitespaces(split_commands[i]);
-	// char *hh = trim_spaces(split_commands[0]);
-	// print_out(trim_commands);
+		
+		trimed = trim_spaces(line);
+		// write(1, &nb, 1);
+		if (verif_quotes(trimed) == -1)
+			ft_putstr_fd("Error : quote not closed\n", 2);
+		if (starts_with(trimed) || check_semicolon(trimed))
+			return;
+		split_commands = splitting_by_semicolon(trimed);
+		int i = 0;
+		while (i <= nb)
+		{
+			trim_commands[i] = remove_whitespaces(split_commands[i]);
+			i++;
+		}
+		// write(1, &nb, 1);
+		// g_all.commands->args[0] = "echo";
+		g_all.commands->args = (char **)malloc(sizeof(char **) * 10);
+		// char *hh = trim_spaces(split_commands[0]);
+		// print_out(trim_commands);
+		/* printing trimed whitespaces */
+					// for (i = 0; i <= nb; i++)
+					// {
+					// 	write(1, trim_commands[i], ft_strlen(trim_commands[i]));
+					// 	write(1, "\n", 1);
+					// }
+		/* printing trimed whitespaces */
+	}
 }
