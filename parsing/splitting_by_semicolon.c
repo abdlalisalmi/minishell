@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 16:52:34 by atahiri           #+#    #+#             */
-/*   Updated: 2021/06/09 21:19:34 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/06/10 10:52:26 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ char        **splitting_by_semicolon(char *buff)
 	int		i = -1;
     
 	nb = number_of_semicolons(buff);
-	splitted = malloc(sizeof(char *) * (nb));
     splitted = ft_split(buff, ';');
 	return splitted;
 }
