@@ -6,13 +6,13 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:10:02 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/06/09 21:06:46 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/10 15:16:57 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../minishell.h"
 
-int is_builtins(char *cmd)
+int		is_builtins(char *cmd)
 {
 	if (ft_strcmp(cmd, "cd") || ft_strcmp(cmd, "echo") ||
 		ft_strcmp(cmd, "env") || ft_strcmp(cmd, "exit") ||
@@ -22,22 +22,22 @@ int is_builtins(char *cmd)
 	return (0);
 }
 
-void exec_builtins(char **args, int n_args)
+void	exec_builtins(char **args, int n_args)
 {
 	if (ft_strcmp(args[0], "cd"))
 		ft_cd(args, n_args);
 	else if (ft_strcmp(args[0], "echo"))
 		ft_echo(args);
 	else if (ft_strcmp(args[0], "env"))
-		ft_env();
+		ft_env(args, n_args);
 	else if (ft_strcmp(args[0], "exit"))
 		ft_exit(args, n_args);
 	else if (ft_strcmp(args[0], "export"))
 		ft_export(args, n_args);
 	else if (ft_strcmp(args[0], "pwd"))
-		printf("pwd\n");
+		printf("%s\n", ft_pwd());
 	else if (ft_strcmp(args[0], "unset"))
-		printf("unset\n");
+		ft_unset(args, n_args);
 }
 
 void	exec_single_cmd(char **args, int n_args, char **envp)
@@ -54,6 +54,6 @@ void	exec_single_cmd(char **args, int n_args, char **envp)
 			printf("minishell: %s command not found\n", args[0]);
 		else
 			if (execve(cmd_path, args, envp) == -1)
-				printf("execve: %s\n", strerror(errno));
+				ft_putstr_fd(strerror(errno), 2);
 	}
 }
