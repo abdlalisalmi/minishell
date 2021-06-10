@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 10:39:09 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/06/09 18:24:40 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/10 10:27:07 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	print_env(void)
 
 	while (++i < g_all.n_env)
 	{
-		if (g_all.env[i].name)
+		if (g_all.env[i].name && !ft_strcmp(g_all.env[i].name, "?"))
 			printf("declare -x %s=\"%s\"\n", g_all.env[i].name, g_all.env[i].value);
 	}
 	set_env("?", "0");
@@ -63,11 +63,13 @@ int ft_export(char **args, int n_args)
 	else
 	{
 		i = 0;
-		while (++i < n_args)
+		while (i < n_args)
 		{
 			if (ft_isdigit(args[i][0]))
 			{
-				printf("minishell: export: `%s': not a valid identifier\n", args[i]);
+				ft_putstr_fd("minishell: export: `", 2);
+				ft_putstr_fd(args[i], 2);
+				ft_putstr_fd("': not a valid identifier\n", 2);
 				set_env("?", "1");
 			}
 			else
@@ -76,6 +78,7 @@ int ft_export(char **args, int n_args)
 					set_env(get_env_name(args[i]), get_env_value(args[i]));
 					set_env("?", "0");
 				}
+			i++;
 		}
 	}
 	return (1);

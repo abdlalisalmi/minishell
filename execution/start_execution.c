@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:13:03 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/06/09 21:05:13 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/10 10:50:43 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void test(void)
 	// g_all.commands[0].args[2] = ft_strdup("world");
 	g_all.commands[0].n_args = 2;
 	
-	ft_cd(g_all.commands[0].args, g_all.commands[0].n_args);
-	printf("%s\n", ft_pwd());
+	// ft_cd(g_all.commands[0].args, g_all.commands[0].n_args);
+	// printf("%s\n", ft_pwd());
 	// printf("$? = %s\n", get_env("?"));
 	// printf("$? = %s\n", get_env("?"));
 
@@ -139,16 +139,33 @@ void test(void)
 
 void start_execution(char **envp)
 {
-	g_all.commands = malloc(sizeof(char*) * 2);
+	g_all.commands = malloc(sizeof(t_command) * 5);
+
 	g_all.commands[0].args = malloc(sizeof(char*) * 3);
-	g_all.commands[0].args[0] = ft_strdup("exit");
-	g_all.commands[0].args[1] = ft_strdup("55");
-	// g_all.commands[0].args[2] = ft_strdup("10");
-	// g_all.commands[0].args[3] = ft_strdup("world");
+	g_all.commands[0].args[0] = ft_strdup("export");
+	g_all.commands[0].args[1] = ft_strdup("abdlali=abdlali");
+	g_all.commands[0].args[2] = ft_strdup("salmi=salmi");
+	exec_single_cmd(g_all.commands[0].args, 3, envp);
 
-	exec_single_cmd(g_all.commands[0].args, 2, envp);
+	g_all.commands[1].args = malloc(sizeof(char*) * 2);
+	g_all.commands[1].args[0] = ft_strdup("export");
+	exec_single_cmd(g_all.commands[1].args, 1, envp);
 
-	// exec_single_cmd(g_all.commands[0].args, 1, envp);
+	printf("-------------------------------------------------------------------\n");
+
+	g_all.commands[2].args = malloc(sizeof(char*) * 3);
+	g_all.commands[2].args[0] = ft_strdup("unset");
+	g_all.commands[2].args[1] = ft_strdup("abdlali");
+	// g_all.commands[2].args[2] = ft_strdup("abdlali");
+	exec_single_cmd(g_all.commands[2].args, 2, envp);
+
+printf("-------------------------------------------------------------------\n");
+
+	g_all.commands[3].args = malloc(sizeof(char*) * 2);
+	g_all.commands[3].args[0] = ft_strdup("export");
+	exec_single_cmd(g_all.commands[1].args, 1, envp);
+	
+
 
 }
 

@@ -72,8 +72,8 @@ t_all	g_all;
 char	*ft_pwd(void);
 int		ft_cd(char **args, int n_args);
 int		ft_export(char **args, int n_args);
-void	ft_unset(char **args);
-void	ft_env(void);
+void	ft_unset(char **args, int n_args);
+void	ft_env(char **args, int n_args);
 void	ft_exit(char **args, int n_args);
 void 	ft_echo(char **args);
 
@@ -89,6 +89,9 @@ int		set_env(char *name, char *value);
 */
 void	add_to_history(char *command);
 
+/*
+** Manage Execution functions
+*/
 void	start_execution();
 void	exec_single_cmd(char **args, int n_args, char **envp);
 char	*get_cmd_path(char *cmd);
