@@ -3,18 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 11:50:02 by atahiri           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/06/10 16:27:42 by atahiri          ###   ########.fr       */
-=======
-<<<<<<< HEAD
-/*   Updated: 2021/06/10 09:33:00 by aes-salm         ###   ########.fr       */
-=======
-/*   Updated: 2021/06/10 15:38:17 by atahiri          ###   ########.fr       */
->>>>>>> 3bdb3257060a95b35e7d21c468cf0260c4753a86
->>>>>>> 3c7bd1e515b74d51e109c825c037d3890eaaadd7
+/*   Updated: 2021/06/10 17:06:16 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +134,7 @@ int			count_number_of_args(char **str)
 {
 	int i = -1;
 	int count = 0;
-	while (str[++i])
+	while (str[++i] != NULL)
 	{
 		count++;
 	}
@@ -174,17 +166,17 @@ void		start_parsing(char *line)
 		split_commands = splitting_by_semicolon(trimed);
 
 		
-		int i = 0;
-		while (i < nb)
-		{
+		int i = -1;
+		while (++i < nb)
 			trim_commands[i] = remove_whitespaces(split_commands[i]);
-			i++;
-		}
+		trim_commands[i] = NULL;
 		// write(1, &nb, 1);
 		// g_all.commands->args[0] = "echo";
-		char **split_spaces = ft_split(trim_commands[0], ' ');
+		char **split_spaces = ft_split(trim_commands[2], ' ');
 
 		int count = count_number_of_args(split_spaces);
+
+
 		g_all.commands = malloc(sizeof(t_command) * nb);
 		for (i = 0; i < nb; i++)
 		{
@@ -194,7 +186,7 @@ void		start_parsing(char *line)
 
 		for(i = 0; i < count; i++)
 		{
-			g_all.commands[0].args[i] = split_spaces[i];
+			g_all.commands[2].args[i] = split_spaces[i];
 		}
 		// char *hh = trim_spaces(split_commands[0]);
 		// print_out(trim_commands);
@@ -207,7 +199,7 @@ void		start_parsing(char *line)
 		/* printing trimed whitespaces */
 		for (i = 0; i < count; i++)
 		{
-			write(1, g_all.commands[0].args[i], ft_strlen(g_all.commands[0].args[i]));
+			write(1, g_all.commands[2].args[i], ft_strlen(g_all.commands[2].args[i]));
 			write(1, "\n", 1);
 		}
 		// for (i = 0; i < 3; i++)
