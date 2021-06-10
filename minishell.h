@@ -41,7 +41,6 @@ typedef struct	s_history
 /* AMINE STRUCT */
 
 typedef struct 			s_command {
-	// char				*cmd;
 	char 				**args;
 	int					n_args;
 	char				*outfile;
@@ -49,7 +48,6 @@ typedef struct 			s_command {
 }						t_command;
 
 typedef struct s_all {
-	int			ret;
 	char		*buff;
 	int			s_quote;
 	int			d_quote;
