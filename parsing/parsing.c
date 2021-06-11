@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 11:50:02 by atahiri           #+#    #+#             */
-/*   Updated: 2021/06/10 19:29:24 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/06/11 10:41:40 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,12 +150,12 @@ void		start_parsing(char *line)
 		char **split_commands;
 		int nb = 0;
 		nb = number_of_semicolons(line) + 1;
-		write(1, &nb, 1);
+		
 		char **trim_commands = malloc(sizeof(char *) * (nb + 1));
 
 		
 		trimed = trim_spaces(line);
-		// write(1, &nb, 1);
+		
 		if (verif_quotes(trimed) == -1)
 			ft_putstr_fd("Error : quote not closed\n", 2);
 		if (starts_with(trimed) || check_semicolon(trimed))
@@ -170,38 +170,53 @@ void		start_parsing(char *line)
 		while (++i < nb)
 			trim_commands[i] = remove_whitespaces(split_commands[i]);
 		trim_commands[i] = NULL;
-		// write(1, &nb, 1);
-		// g_all.commands->args[0] = "echo";
-		char **split_spaces = ft_split(trim_commands[2], ' ');
+		
 
-		int count = count_number_of_args(split_spaces);
-
-
-		g_all.commands = malloc(sizeof(t_command) * nb);
-		for (i = 0; i < nb; i++)
+		int nb_command = count_number_of_args(trim_commands);
+		g_all.commands = malloc(sizeof(t_command) * nb_command);
+		i = -1;
+		while (++i < nb_command)
 		{
+			char **split_spaces = ft_split(trim_commands[i], ' ');
+			int count = count_number_of_args(split_spaces);
+			g_all.commands[i].n_args = count;
 			g_all.commands[i].args = (char **)malloc(sizeof(char *) * count);
+			for (int j = 0; j < count; j++)
+			{
+				g_all.commands[i].args[j] = ft_strdup(split_spaces[j]);
+			}
 		}
 
 
-		for(i = 0; i < count; i++)
-		{
-			g_all.commands[2].args[i] = split_spaces[i];
-		}
+
+
+
+		
+		
+		// write(1, g_all.commands[0].args[0], ft_strlen(g_all.commands[0].args[0]));
+
+		
+
+		// for(i = 0; i < nb_command; i++)
+		// {
+			
+		// }
+		
+
 		// char *hh = trim_spaces(split_commands[0]);
-		// print_out(trim_commands);
+		// print_out(g_all.commands[0].args);
 		/* printing trimed whitespaces */
-					// for (i = 0; i <= nb; i++)
+					// for (int i = 0; i < nb; i++)
 					// {
 					// 	write(1, trim_commands[i], ft_strlen(trim_commands[i]));
 					// 	write(1, "\n", 1);
 					// }
 		/* printing trimed whitespaces */
-		for (i = 0; i < count; i++)
-		{
-			write(1, g_all.commands[2].args[i], ft_strlen(g_all.commands[2].args[i]));
-			write(1, "\n", 1);
-		}
+		// for (i = 0; i < count; i++)
+		// {
+		// 	write(1, g_all.commands[2].args[i], ft_strlen(g_all.commands[2].args[i]));
+		// 	write(1, "\n", 1);
+		// }
 		// for (i = 0; i < 3; i++)
 		// {
 		// 	write(1, g_all.commands[1].args[i], ft_strlen(g_all.commands[1].args[i]));
