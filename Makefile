@@ -20,6 +20,7 @@ SRCS 	=	functions/ft_strlen.c\
 			parsing/splitting_by_semicolon.c\
 			execution/env.c\
 			execution/history.c\
+			execution/start_execution.c\
 			execution/exec_single_cmd.c\
 			execution/builtins/ft_pwd.c\
 			execution/builtins/ft_cd.c\

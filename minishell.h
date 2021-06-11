@@ -122,7 +122,7 @@ int		ft_dplen(char **ptr);
 int			ft_gnl(char **line);
 int			ft_strlen(char *s);
 char		*ft_strjoin(char *s, char c);
-void		start_parsing(char *line);
+void		start_parsing(char *line, char **args, char **envp);
 char		**ft_split(const char *ss, char c);
 char		*trim_spaces(char *str);
 void		init_signals(void);
