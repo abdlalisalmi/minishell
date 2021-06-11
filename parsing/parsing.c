@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 11:50:02 by atahiri           #+#    #+#             */
-/*   Updated: 2021/06/11 11:52:43 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/11 18:32:21 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,11 +180,12 @@ void		start_parsing(char *line, char **envp)
 			char **split_spaces = ft_split(trim_commands[i], ' ');
 			int count = count_number_of_args(split_spaces);
 			g_all.commands[i].n_args = count;
-			g_all.commands[i].args = (char **)malloc(sizeof(char *) * count);
+			g_all.commands[i].args = (char **)malloc(sizeof(char *) * (count + 1));
 			for (int j = 0; j < count; j++)
 			{
 				g_all.commands[i].args[j] = ft_strdup(split_spaces[j]);
 			}
+			g_all.commands[i].args = NULL;
 		}
 
 
