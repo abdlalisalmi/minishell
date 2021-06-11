@@ -92,7 +92,7 @@ void	add_to_history(char *command);
 /*
 ** Manage Execution functions
 */
-void	start_execution(char **args, char **envp);
+void	start_execution(char **envp);
 void	exec_single_cmd(char **args, int n_args, char **envp);
 char	*get_cmd_path(char *cmd);
 
@@ -108,6 +108,7 @@ int		ft_isdigit(int arg);
 char	*ft_strappend(char *s1, char *s2);
 void	free_d_pointer(char **ptr);
 int		ft_dplen(char **ptr);
+void	init_all_struct(void);
 
 
 
@@ -122,7 +123,7 @@ int		ft_dplen(char **ptr);
 int			ft_gnl(char **line);
 int			ft_strlen(char *s);
 char		*ft_strjoin(char *s, char c);
-void		start_parsing(char *line, char **args, char **envp);
+void		start_parsing(char *line, char **envp);
 char		**ft_split(const char *ss, char c);
 char		*trim_spaces(char *str);
 void		init_signals(void);

@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:10:02 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/06/10 15:16:57 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/11 12:29:45 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	exec_builtins(char **args, int n_args)
 {
 	if (ft_strcmp(args[0], "cd"))
 		ft_cd(args, n_args);
-	else if (ft_strcmp(args[0], "echo"))
+	else if (ft_strcmp(args[0], "echo") || ft_strcmp(args[0], "ECHO"))
 		ft_echo(args);
 	else if (ft_strcmp(args[0], "env"))
 		ft_env(args, n_args);

@@ -6,16 +6,11 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:13:03 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/06/11 10:41:29 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/11 12:00:38 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-void init_struct(void)
-{
-	g_all.history.n_commands = 0;
-}
 
 void test(void)
 {
@@ -137,37 +132,37 @@ void test(void)
 	// printf("status : %d\n", status);
 }
 
-void start_execution(char **args, char **envp)
+void start_execution(char **envp)
 {
-// 	g_all.commands = malloc(sizeof(t_command) * 5);
+	// g_all.commands = malloc(sizeof(t_command) * 5);
 
-// 	g_all.commands[0].args = malloc(sizeof(char*) * 3);
-// 	g_all.commands[0].args[0] = ft_strdup("export");
-// 	g_all.commands[0].args[1] = ft_strdup("abdlali=abdlali");
-// 	g_all.commands[0].args[2] = ft_strdup("salmi=salmi");
-// 	exec_single_cmd(g_all.commands[0].args, 3, envp);
+	// g_all.commands[0].args = malloc(sizeof(char*) * 3);
+	// g_all.commands[0].args[0] = ft_strdup("export");
+	// g_all.commands[0].args[1] = ft_strdup("abdlali=abdlali");
+	// g_all.commands[0].args[2] = ft_strdup("salmi=salmi");
+	// exec_single_cmd(g_all.commands[0].args, 3, envp);
 
-// 	g_all.commands[1].args = malloc(sizeof(char*) * 2);
-// 	g_all.commands[1].args[0] = ft_strdup("export");
-// 	exec_single_cmd(g_all.commands[1].args, 1, envp);
+	// g_all.commands[1].args = malloc(sizeof(char*) * 2);
+	// g_all.commands[1].args[0] = ft_strdup("export");
+	// exec_single_cmd(g_all.commands[1].args, 1, envp);
 
-// 	printf("-------------------------------------------------------------------\n");
+	// printf("-------------------------------------------------------------------\n");
 
-// 	g_all.commands[2].args = malloc(sizeof(char*) * 3);
-// 	g_all.commands[2].args[0] = ft_strdup("unset");
-// 	g_all.commands[2].args[1] = ft_strdup("abdlali");
-// 	g_all.commands[2].args[2] = ft_strdup("salmi");
-// 	exec_single_cmd(g_all.commands[2].args, 3, envp);
+	// g_all.commands[2].args = malloc(sizeof(char*) * 3);
+	// g_all.commands[2].args[0] = ft_strdup("unset");
+	// g_all.commands[2].args[1] = ft_strdup("abdlali");
+	// g_all.commands[2].args[2] = ft_strdup("salmi");
+	// exec_single_cmd(g_all.commands[2].args, 3, envp);
 
 // printf("-------------------------------------------------------------------\n");
 
 // 	g_all.commands[3].args = malloc(sizeof(char*) * 2);
 // 	g_all.commands[3].args[0] = ft_strdup("export");
 
-	exec_single_cmd(g_all.commands[1].args, 1, envp);
+	// dprintf(2, "%s\n", g_all.commands[0].args[0]);
+
+	exec_single_cmd(g_all.commands[0].args, g_all.commands[0].n_args, envp);
 	
-
-
 }
 
 // int main(int argc, char **args, char **envp)

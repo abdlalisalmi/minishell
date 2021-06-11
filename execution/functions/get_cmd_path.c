@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:12:04 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/06/09 10:15:13 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/11 12:22:42 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ char	*get_cmd_path(char *cmd)
 		if (fd > -1)
 		{
 			close(fd);
+			free(command);
+			free_d_pointer(paths);
 			return (full_path);
 		}
 		free(command);

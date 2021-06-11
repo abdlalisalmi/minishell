@@ -14,6 +14,7 @@ SRCS 	=	functions/ft_strlen.c\
 			functions/ft_strappend.c\
 			functions/free_d_pointer.c\
 			functions/ft_dplen.c\
+			functions/init_all_struct.c\
 			parsing/parsing.c\
 			parsing/signals.c\
 			parsing/trim_spaces.c\
