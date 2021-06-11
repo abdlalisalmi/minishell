@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 11:50:02 by atahiri           #+#    #+#             */
-/*   Updated: 2021/06/11 18:32:21 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/06/11 18:34:03 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,17 +175,20 @@ void		start_parsing(char *line, char **envp)
 		int nb_command = count_number_of_args(trim_commands);
 		g_all.commands = malloc(sizeof(t_command) * nb_command);
 		i = -1;
+		int j = 0;
 		while (++i < nb_command)
 		{
 			char **split_spaces = ft_split(trim_commands[i], ' ');
 			int count = count_number_of_args(split_spaces);
 			g_all.commands[i].n_args = count;
 			g_all.commands[i].args = (char **)malloc(sizeof(char *) * (count + 1));
-			for (int j = 0; j < count; j++)
+			j = 0;
+			while (j < count)
 			{
 				g_all.commands[i].args[j] = ft_strdup(split_spaces[j]);
+				j++;
 			}
-			g_all.commands[i].args = NULL;
+			g_all.commands[i].args[j] = NULL;
 		}
 
 
