@@ -92,7 +92,7 @@ void	add_to_history(char *command);
 /*
 ** Manage Execution functions
 */
-void	start_execution();
+void	start_execution(char **args, char **envp);
 void	exec_single_cmd(char **args, int n_args, char **envp);
 char	*get_cmd_path(char *cmd);
 
