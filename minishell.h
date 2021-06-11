@@ -43,8 +43,8 @@ typedef struct	s_history
 typedef struct 			s_command {
 	char 				**args;
 	int					n_args;
-	char				*outfile;
-	char				*inputfile;
+	char				**outfile;
+	char				**inputfile;
 }						t_command;
 
 typedef struct s_all {

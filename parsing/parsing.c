@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 11:50:02 by atahiri           #+#    #+#             */
-/*   Updated: 2021/06/11 18:34:03 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/06/11 20:10:47 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,7 +196,7 @@ void		start_parsing(char *line, char **envp)
 
 
 		
-		start_execution(envp);
+		start_execution(nb_command, envp);
 		// write(1, g_all.commands[0].args[0], ft_strlen(g_all.commands[0].args[0]));
 		// write(1, g_all.commands[0].args[1], ft_strlen(g_all.commands[0].args[1]));
 		// write(1, g_all.commands[0].args[2], ft_strlen(g_all.commands[0].args[2]));
