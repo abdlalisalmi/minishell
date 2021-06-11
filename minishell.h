@@ -75,7 +75,7 @@ int		ft_export(char **args, int n_args);
 void	ft_unset(char **args, int n_args);
 void	ft_env(char **args, int n_args);
 void	ft_exit(char **args, int n_args);
-void 	ft_echo(char **args);
+void 	ft_echo(char **args, int n_args);
 
 /*
 ** Manage EnvVar functions

@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 14:01:52 by atahiri           #+#    #+#             */
-/*   Updated: 2021/06/11 11:57:18 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/11 17:45:13 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,12 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)argc;
 	(void)argv;
-	(void)envp;
 	int		ret;
 
 	init_all_struct();
 	collect_env(envp);
-	ret = 1;
 	init_signals();
-	// init_struct();
+	ret = 1;
 	while (ret > 0)
 	{
 		write(1, COLOR PROMPT, ft_strlen(PROMPT) + ft_strlen(COLOR));
