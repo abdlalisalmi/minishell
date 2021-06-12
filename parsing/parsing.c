@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 11:50:02 by atahiri           #+#    #+#             */
-/*   Updated: 2021/06/11 20:10:47 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/06/12 13:00:00 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,23 @@ int			count_number_of_args(char **str)
 	return count;
 }
 
+
+void		handle_redirections(char **command)
+{
+	char **splitted_by_red;
+	// red lbal m3a strstr lah isster
+	if (ft_strchr(*command, '>') || strstr(*command, ">>"))
+	{
+		splitted_by_red = ft_split(*command, '>');
+		free(*command);
+		*command = ft_strdup(splitted_by_red[0]);
+		if (strstr(*command, ">>"))
+			g_all.commands[0].append = 1;
+		// function to return name of file
+	}
+}
+
+
 void		start_parsing(char *line, char **envp)
 {
 	// trim spaces from line
@@ -170,10 +187,14 @@ void		start_parsing(char *line, char **envp)
 		while (++i < nb)
 			trim_commands[i] = remove_whitespaces(split_commands[i]);
 		trim_commands[i] = NULL;
-		
-
 		int nb_command = count_number_of_args(trim_commands);
 		g_all.commands = malloc(sizeof(t_command) * nb_command);
+		// function of redirections
+
+		handle_redirections(&trim_commands[0]);
+
+
+		
 		i = -1;
 		int j = 0;
 		while (++i < nb_command)
