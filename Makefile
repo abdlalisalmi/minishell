@@ -53,7 +53,7 @@ fclean: 	clean
 re: 		fclean all
 
 amine: 		re
-			@ $(CC) $(FLAGS) minishell.c $(NAME) -o minishell -g3 -fsanitize=address
+			@ $(CC) $(FLAGS) minishell.c $(NAME) -o minishell
 			@ rm -rf $(NAME) minishell.a *.o
 
 abdlali: 	re

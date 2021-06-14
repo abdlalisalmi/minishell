@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 11:50:02 by atahiri           #+#    #+#             */
-/*   Updated: 2021/06/12 20:03:04 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/14 15:45:48 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,21 @@ int			count_number_of_args(char **str)
 // 	}
 // }
 
+// int		count_number_of_redirections(char *command)
+// {
+// 	int i = -1;
+// 	int nb = 0;
+
+// 	while (command[++i])
+// 	{
+// 		if (command[i] == '>')
+// 		{
+// 			nb++;
+// 		}
+// 	}
+// 	return nb;
+// }
+
 
 void		start_parsing(char *line, char **envp)
 {
@@ -192,7 +207,8 @@ void		start_parsing(char *line, char **envp)
 		int nb_command = count_number_of_args(trim_commands);
 		g_all.commands = malloc(sizeof(t_command) * nb_command);
 		// function of redirections
-
+		//TODO:Create a function to parse redirections
+		
 		// handle_redirections(&trim_commands[0]);
 
 
@@ -214,7 +230,7 @@ void		start_parsing(char *line, char **envp)
 			g_all.commands[i].args[j] = NULL;
 		}
 
-
+		print_out(g_all.commands->args);
 
 
 

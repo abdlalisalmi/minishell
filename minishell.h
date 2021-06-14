@@ -53,10 +53,6 @@ typedef struct 			s_command {
 	int					n_args;
 	t_redirect			*redirect;
 	int 				n_red;
-	// int					r_right;
-	// int					r_left;
-	// char				**outfile;
-	// char				**inputfile;
 }						t_command;
 
 typedef struct s_all {
