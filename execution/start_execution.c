@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:13:03 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/06/11 19:12:26 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/14 11:47:35 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,20 +135,38 @@ void test(void)
 void start_execution(int n_commands, char **envp)
 {
 	if (n_commands == 1)
-		exec_single_cmd(g_all.commands[0].args, g_all.commands[0].n_args, envp);
+		exec_single_cmd(g_all.commands[0], envp);
 	else
 	{
-		printf("n_commands = %d\n", n_commands);
+		printf("Multiple commands : n_commands = %d\n", n_commands);
 	}
 }
 
-// int main(int argc, char **args, char **envp)
-// {
-// 	init_struct();
-// 	collect_env(envp);
+int main(int argc, char **args, char **envp)
+{
+	init_all_struct();
+	collect_env(envp);
 
-// 	/*Tests*/
-// 	// test();
+	/*Tests*/
+	// test();
 
-// 	start_execution(args, envp);
-// }
+	g_all.commands = malloc(sizeof(t_command) * 2);
+
+	g_all.commands[0].args = malloc(sizeof(char *) * 4);
+	g_all.commands[0].args[0] = ft_strdup("echo");
+	g_all.commands[0].args[1] = ft_strdup("hello");
+	g_all.commands[0].args[2] = ft_strdup("world");
+	g_all.commands[0].args[3] = NULL;
+
+	g_all.commands[0].n_args = 3;
+
+	g_all.commands[0].redirect = malloc(sizeof(t_redirect) * 2);
+	g_all.commands[0].n_red = 2;
+
+	g_all.commands[0].redirect[0].type = RIGHT;
+	g_all.commands[0].redirect[0].file = ft_strdup("file1.txt");
+	g_all.commands[0].redirect[1].type = DOUBLERIGHT;
+	g_all.commands[0].redirect[1].file = ft_strdup("file2.txt");
+
+	start_execution(1, envp);
+}

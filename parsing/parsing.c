@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 11:50:02 by atahiri           #+#    #+#             */
-/*   Updated: 2021/06/12 13:00:00 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/06/12 20:03:04 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,20 +142,22 @@ int			count_number_of_args(char **str)
 }
 
 
-void		handle_redirections(char **command)
-{
-	char **splitted_by_red;
-	// red lbal m3a strstr lah isster
-	if (ft_strchr(*command, '>') || strstr(*command, ">>"))
-	{
-		splitted_by_red = ft_split(*command, '>');
-		free(*command);
-		*command = ft_strdup(splitted_by_red[0]);
-		if (strstr(*command, ">>"))
-			g_all.commands[0].append = 1;
-		// function to return name of file
-	}
-}
+// void		handle_redirections(char **command)
+// {
+// 	char **splitted_by_red;
+// 	// red lbal m3a strstr lah isster
+
+// 	// g_all.commands[0].r_right = 0;
+// 	if (ft_strchr(*command, '>') || strstr(*command, ">>"))
+// 	{
+// 		splitted_by_red = ft_split(*command, '>');
+// 		free(*command);
+// 		*command = ft_strdup(splitted_by_red[0]);
+// 		if (strstr(*command, ">>"))
+// 			g_all.commands[0].r_right = 2;
+// 		// function to return name of file
+// 	}
+// }
 
 
 void		start_parsing(char *line, char **envp)
@@ -191,7 +193,7 @@ void		start_parsing(char *line, char **envp)
 		g_all.commands = malloc(sizeof(t_command) * nb_command);
 		// function of redirections
 
-		handle_redirections(&trim_commands[0]);
+		// handle_redirections(&trim_commands[0]);
 
 
 		

@@ -16,11 +16,15 @@
 # define SEMICOLON		88
 # define ARG			77
 # define CMD			66
-# define RIGHT			55
-# define DOUBLERIGHT	44
-# define LEFT			33
+
+# define RIGHT			1
+# define DOUBLERIGHT	2
+# define LEFT			3
 
 # define HISTSIZE		1000
+
+# define PERMISSION S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH
+
 
 /* ABDELAALI STRUCT */
 typedef struct 	s_env 
@@ -35,7 +39,11 @@ typedef struct	s_history
 	int			n_commands;
 }				t_history;
 
-
+typedef struct	s_redirect
+{
+	int			type;
+	char		*file;
+}				t_redirect;
 
 
 /* AMINE STRUCT */
@@ -43,9 +51,12 @@ typedef struct	s_history
 typedef struct 			s_command {
 	char 				**args;
 	int					n_args;
-	int					append;
-	char				**outfile;
-	char				**inputfile;
+	t_redirect			*redirect;
+	int 				n_red;
+	// int					r_right;
+	// int					r_left;
+	// char				**outfile;
+	// char				**inputfile;
 }						t_command;
 
 typedef struct s_all {
@@ -53,8 +64,8 @@ typedef struct s_all {
 	int			s_quote;
 	int			d_quote;
 	
-	int		n_env;
-	t_env	*env;
+	int			n_env;
+	t_env		*env;
 	t_history	history;
 	t_command	*commands;
 }				t_all;
@@ -94,7 +105,7 @@ void	add_to_history(char *command);
 ** Manage Execution functions
 */
 void	start_execution(int n_command, char **envp);
-void	exec_single_cmd(char **args, int n_args, char **envp);
+void	exec_single_cmd(t_command command, char **envp);
 char	*get_cmd_path(char *cmd);
 
 /*

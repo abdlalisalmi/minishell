@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:10:02 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/06/11 18:27:23 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/14 11:47:14 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,23 +63,52 @@ void	exec_system_cmd(char *cmd_path, char **args, char **envp)
 	}
 }
 
-void	exec_single_cmd(char **args, int n_args, char **envp)
+void	setup_redirections(t_command command)
+{
+	int i;
+	int fd;
+
+	i = -1;
+	while (++i < command.n_red)
+	{
+		printf("%s\n", command.redirect[0].file);
+	}
+	
+	// if (command.r_right == 1 || command.r_right == 2)
+	// {
+	// 	i = -1;
+	// 	while (command.outfile[++i] && command.r_right == 1)
+	// 		fd = open(command.outfile[i], O_WRONLY | O_CREAT | O_TRUNC, PERMISSION);
+	// 	i = -1;
+	// 	while (command.outfile[++i] && command.r_right == 2)
+	// 		fd = open(command.outfile[i], O_WRONLY | O_CREAT, PERMISSION);
+	// 	dup2(fd, 1);
+	// 	close(fd);
+	// }
+	// if (command.r_left == 1)
+	// {
+	// 	// printf("Input file redirections");
+	// }
+}
+
+void	exec_single_cmd(t_command command, char **envp)
 {
 	char **paths;
 	char *cmd_path;
 
-	if (is_builtins(args[0]))
-		exec_builtins(args, n_args);
+	setup_redirections(command);
+	if (is_builtins(command.args[0]))
+		exec_builtins(command.args, command.n_args);
 	else
 	{
-		cmd_path = get_cmd_path(args[0]);
+		cmd_path = get_cmd_path(command.args[0]);
 		if (!cmd_path)
 		{
 			ft_putstr_fd("minishell: ", 2);
-			ft_putstr_fd(args[0], 2);
+			ft_putstr_fd(command.args[0], 2);
 			ft_putstr_fd(" command not found\n", 2);
 		}
 		else
-			exec_system_cmd(cmd_path, args, envp);
-	}
+			exec_system_cmd(cmd_path, command.args, envp);
+	}	
 }
