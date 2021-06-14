@@ -57,5 +57,5 @@ amine: 		re
 			@ rm -rf $(NAME) minishell.a *.o
 
 abdlali: 	re
-			@ $(CC) $(FLAGS) execution/start_execution.c $(NAME) -g3 -fsanitize=address
+			@ $(CC) $(FLAGS) execution/main.c $(NAME) -g3 -fsanitize=address
 			@ rm -rf $(NAME) minishell.a *.o
