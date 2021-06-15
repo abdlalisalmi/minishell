@@ -6,7 +6,11 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 11:50:02 by atahiri           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2021/06/14 19:45:10 by atahiri          ###   ########.fr       */
+=======
+/*   Updated: 2021/06/15 00:31:42 by atahiri          ###   ########.fr       */
+>>>>>>> 089d30448e3e67d9e82d54721d4bfd626fdefc73
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,7 +193,6 @@ void		start_parsing(char *line, char **envp)
 
 		
 		trimed = trim_spaces(line);
-		
 		if (verif_quotes(trimed) == -1)
 			ft_putstr_fd("Error : quote not closed\n", 2);
 		if (starts_with(trimed) || check_semicolon(trimed))
@@ -229,8 +232,14 @@ void		start_parsing(char *line, char **envp)
 			}
 			g_all.commands[i].args[j] = NULL;
 		}
+<<<<<<< HEAD
 		// print_out(g_all.commands[1].args);
 		
+=======
+
+		print_out(g_all.commands[0].args);
+
+>>>>>>> 089d30448e3e67d9e82d54721d4bfd626fdefc73
 
 
 		
