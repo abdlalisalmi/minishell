@@ -170,10 +170,10 @@ void		start_parsing(char *line, char **envp)
 	{
 		char *trimed;
 		char **split_commands;
-		int nb = 0;
-		nb = number_of_semicolons(line) + 1;
+		char **trim_commands;
+		int nb;
+		// nb = number_of_semicolons(line) + 1;
 		
-		char **trim_commands = malloc(sizeof(char *) * (nb + 1));
 
 		
 		trimed = trim_spaces(line);
@@ -185,9 +185,12 @@ void		start_parsing(char *line, char **envp)
 
 
 		split_commands = splitting_by_semicolon(trimed);
+		nb = ft_dplen(split_commands);
+		trim_commands = malloc(sizeof(char *) * (nb + 1));
 
 		
 		int i = -1;
+		printf("NB: %d\n", nb);
 		while (++i < nb)
 			trim_commands[i] = remove_whitespaces(split_commands[i]);
 		trim_commands[i] = NULL;
