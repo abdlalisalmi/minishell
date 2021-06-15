@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 11:50:02 by atahiri           #+#    #+#             */
-/*   Updated: 2021/06/14 15:45:48 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/06/14 19:45:10 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,20 +159,20 @@ int			count_number_of_args(char **str)
 // 	}
 // }
 
-// int		count_number_of_redirections(char *command)
-// {
-// 	int i = -1;
-// 	int nb = 0;
+int		count_number_of_redirections(char *command)
+{
+	int i = -1;
+	int nb = 0;
 
-// 	while (command[++i])
-// 	{
-// 		if (command[i] == '>')
-// 		{
-// 			nb++;
-// 		}
-// 	}
-// 	return nb;
-// }
+	while (command[++i])
+	{
+		if (command[i] == '>')
+		{
+			nb++;
+		}
+	}
+	return nb;
+}
 
 
 void		start_parsing(char *line, char **envp)
@@ -208,7 +208,7 @@ void		start_parsing(char *line, char **envp)
 		g_all.commands = malloc(sizeof(t_command) * nb_command);
 		// function of redirections
 		//TODO:Create a function to parse redirections
-		
+		print_out(trim_commands);
 		// handle_redirections(&trim_commands[0]);
 
 
@@ -229,9 +229,8 @@ void		start_parsing(char *line, char **envp)
 			}
 			g_all.commands[i].args[j] = NULL;
 		}
-
-		print_out(g_all.commands->args);
-
+		// print_out(g_all.commands[1].args);
+		
 
 
 		
