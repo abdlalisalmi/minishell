@@ -151,10 +151,13 @@ int		count_number_of_redirections(char *command)
 {
 	int i = -1;
 	int nb = 0;
+	char **space_split;
 
-	while (command[++i])
+	space_split = ft_split(command, ' ');
+
+	while (space_split[++i])
 	{
-		if (command[i] == '>')
+		if (ft_strcmp(space_split[i], ">") || ft_strcmp(space_split[i], ">>") || ft_strcmp(space_split[i], "<"))
 		{
 			nb++;
 		}
@@ -162,6 +165,18 @@ int		count_number_of_redirections(char *command)
 	return nb;
 }
 
+
+void	parsing_redirections(char **commands, int nb_command)
+{
+	int i = -1;
+	int j = -1;
+	int nb_red = 0;
+	while (++i < nb_command)
+	{
+		nb_red = count_number_of_redirections(commands[i]);
+		dprintf(2, "NB ========= %d\n", nb_red);
+	}
+}
 
 void		start_parsing(char *line, char **envp)
 {
@@ -190,7 +205,6 @@ void		start_parsing(char *line, char **envp)
 
 		
 		int i = -1;
-		printf("NB: %d\n", nb);
 		while (++i < nb)
 			trim_commands[i] = remove_whitespaces(split_commands[i]);
 		trim_commands[i] = NULL;
@@ -198,7 +212,9 @@ void		start_parsing(char *line, char **envp)
 		g_all.commands = malloc(sizeof(t_command) * nb_command);
 		// function of redirections
 		//TODO:Create a function to parse redirections
-		print_out(trim_commands);
+		
+		parsing_redirections(trim_commands, nb_command);
+
 		// handle_redirections(&trim_commands[0]);
 
 
@@ -219,9 +235,9 @@ void		start_parsing(char *line, char **envp)
 			}
 			g_all.commands[i].args[j] = NULL;
 		}
-		// print_out(g_all.commands[1].args);
 
-		print_out(g_all.commands[0].args);
+		
+		// print_out(g_all.commands[1].args);
 
 
 		
