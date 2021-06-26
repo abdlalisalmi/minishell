@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:10:02 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/06/14 11:47:14 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/06/26 15:50:13 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ void	exec_builtins(char **args, int n_args)
 		ft_cd(args, n_args);
 	else if (ft_strcmp(args[0], "echo") || ft_strcmp(args[0], "ECHO"))
 		ft_echo(args, n_args);
-	else if (ft_strcmp(args[0], "env"))
+	else if (ft_strcmp(args[0], "env") || ft_strcmp(args[0], "ENV"))
 		ft_env(args, n_args);
 	else if (ft_strcmp(args[0], "exit"))
 		ft_exit(args, n_args);
 	else if (ft_strcmp(args[0], "export"))
 		ft_export(args, n_args);
-	else if (ft_strcmp(args[0], "pwd"))
+	else if (ft_strcmp(args[0], "pwd") || ft_strcmp(args[0], "PWD"))
 		printf("%s\n", ft_pwd());
 	else if (ft_strcmp(args[0], "unset"))
 		ft_unset(args, n_args);
